@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Carpool2UH - Login</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+	
+	<style type="text/css">
+		.content {
+			margin: auto;
+			max-width: 100%;
+			text-align: center;
+			width: 500px;
+		}
+		#count-down {
+			font-size: 4em;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="content">
+			<h3>Logging in...</h3>
+			<p>
+				This is a temporary page. What's suppose to happen is:
+			</p>
+			<p>
+				<i class="glyphicon glyphicon-chevron-right"></i> You get redirected to the UH login page where<br/>
+				<i class="glyphicon glyphicon-chevron-right"></i> You login and get redirected to the webapp in
+			</p>
+			<p class="count-down-wrap">
+				<span id="count-down">10</span><br/>
+				Click <a href="interface.html">here</a> if you don't want to wait.
+			</p>
+		</div>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript">
+		var interval = setInterval(function() {
+			var count = Number($('#count-down').text());
+			count--;
+			$('#count-down').text(count);
+			if(count == 0) {
+				clearInterval(interval);
+				window.location = 'interface.html';
+			}
+		}, 1000);
+	</script>
+</body>
+</html>
