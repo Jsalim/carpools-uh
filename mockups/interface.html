@@ -4,6 +4,9 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
 	
 	<style type="text/css">
+		.clear {
+			clear: both;
+		}
 		.notifications {
 			width: 250px;
 		}
@@ -17,6 +20,24 @@
 		.form-control.inline {
 			display: inline-block;
 			width: 50px;
+		}
+		.hidden-xs {
+			display: inline-block!important;
+		}
+		@media (max-width: 767px) {
+			.hidden-xs {
+				display: none!important;
+			}
+		}
+		.table th, .table td {
+			text-align: center;
+		}
+		.table th:first-child, .table td:first-child {
+			text-align: left;
+		}
+		.table thead tr th {
+			border-bottom-color: #333;
+			padding-top: 30px;
 		}
 	</style>
 </head>
@@ -60,6 +81,54 @@
 			<button class="btn btn-default" data-toggle="modal" data-target="#create-carpool-modal"><i class="glyphicon glyphicon-plus"></i> Create Carpool</button>
 			<button class="btn btn-default" data-toggle="modal" data-target="#search-modal"><i class="glyphicon glyphicon-search"></i> Search/Filter</button>
 		</div>
+		<div class="clear"></div>
+		
+		<table class="table table-condensed table-hover">
+			<thead><tr>
+				<th>This Week (2/3 - 2/7)</th>
+				<th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
+			</tr></thead>
+			<tbody>
+				<tr>
+					<td>Jack Rogers (jrogers)</td>
+					<td>9a</td>
+					<td>1030a</td>
+					<td>-</td>
+					<td>1030a</td>
+					<td>-</td>
+				</tr>
+				<tr>
+					<td>James Speed (jspeed)</td>
+					<td>-</td>
+					<td>10a</td>
+					<td>930a</td>
+					<td>-</td>
+					<td>11a</td>
+				</tr>
+			</tbody>
+			<thead><tr>
+				<th>Next Week (2/10 - 2/14)</th>
+				<th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
+			</tr></thead>
+			<tbody>
+				<tr>
+					<td>John Smith (jsmith)</td>
+					<td>930a</td>
+					<td>10a</td>
+					<td>11a</td>
+					<td>9a</td>
+					<td>9a</td>
+				</tr>
+				<tr>
+					<td>Jane Doe (jdoe)</td>
+					<td>9a</td>
+					<td>730a</td>
+					<td>830a</td>
+					<td>730a</td>
+					<td>-</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	
 	<div id="search-modal" class="modal fade">
