@@ -21,23 +21,44 @@
 			display: inline-block;
 			width: 50px;
 		}
-		.hidden-xs {
-			display: inline-block!important;
-		}
 		@media (max-width: 767px) {
 			.hidden-xs {
 				display: none!important;
 			}
 		}
-		.table th, .table td {
+		
+		/* Table */
+		#carpools-table {
+			margin-top: 30px;
+		}
+		#carpools-table th, #carpools-table td {
 			text-align: center;
 		}
-		.table th:first-child, .table td:first-child {
+		#carpools-table th:first-child, #carpools-table td:first-child {
 			text-align: left;
 		}
-		.table thead tr th {
+		#carpools-table thead tr th {
 			border-bottom-color: #333;
-			padding-top: 30px;
+		}
+		
+		#carpools-table th {
+			cursor: pointer;
+		}
+		#carpools-table th .glyphicon {
+			display: none;
+			margin-right: .25em;
+		}
+		#carpools-table th .glyphicon.default {
+			display: inline-block;
+		}
+		#carpools-table th.headerSortUp .glyphicon.default, #carpools-table th.headerSortDown .glyphicon.default {
+			display: none;
+		}
+		#carpools-table th.headerSortUp .glyphicon.sort-down {
+			display: inline-block;
+		}
+		#carpools-table th.headerSortDown .glyphicon.sort-up{
+			display: inline-block;
 		}
 	</style>
 </head>
@@ -83,14 +104,47 @@
 		</div>
 		<div class="clear"></div>
 		
-		<table class="table table-condensed table-hover table-striped">
+		<table id="carpools-table" class="tablesorter table table-condensed table-hover table-striped">
 			<thead><tr>
-				<th>This Week (2/3 - 2/7)</th>
-				<th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
+				<th>
+					<i class="glyphicon glyphicon-sort default"></i>
+					<i class="glyphicon glyphicon-arrow-down sort-down"></i>
+					<i class="glyphicon glyphicon-arrow-up sort-up"></i>
+					Name (UH Username)
+				</th>
+				<th>
+					<i class="glyphicon glyphicon-sort default"></i>
+					<i class="glyphicon glyphicon-arrow-down sort-down"></i>
+					<i class="glyphicon glyphicon-arrow-up sort-up"></i>
+					M
+				</th>
+				<th>
+					<i class="glyphicon glyphicon-sort default"></i>
+					<i class="glyphicon glyphicon-arrow-down sort-down"></i>
+					<i class="glyphicon glyphicon-arrow-up sort-up"></i>
+					T
+				</th>
+				<th>
+					<i class="glyphicon glyphicon-sort default"></i>
+					<i class="glyphicon glyphicon-arrow-down sort-down"></i>
+					<i class="glyphicon glyphicon-arrow-up sort-up"></i>
+					W
+				</th>
+				<th>
+					<i class="glyphicon glyphicon-sort default"></i>
+					<i class="glyphicon glyphicon-arrow-down sort-down"></i>
+					<i class="glyphicon glyphicon-arrow-up sort-up"></i>
+					R
+				</th>
+				<th>F
+					<i class="glyphicon glyphicon-sort default"></i>
+					<i class="glyphicon glyphicon-arrow-down sort-down"></i>
+					<i class="glyphicon glyphicon-arrow-up sort-up"></i>
+				</th>
 			</tr></thead>
 			<tbody>
 				<tr>
-					<td>Jack Rogers (jrogers)</td>
+					<td>Mark Jones (mjones)</td>
 					<td>9a</td>
 					<td>1030a</td>
 					<td>-</td>
@@ -105,12 +159,6 @@
 					<td>-</td>
 					<td>11a</td>
 				</tr>
-			</tbody>
-			<thead><tr>
-				<th>Next Week (2/10 - 2/14)</th>
-				<th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
-			</tr></thead>
-			<tbody>
 				<tr>
 					<td>John Smith (jsmith)</td>
 					<td>930a</td>
@@ -246,7 +294,13 @@
 
 	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="js/jquery.tablesorter.js"></script>
 	<script type="text/javascript">
+	
+		$('#carpools-table').tablesorter({
+			
+		});
+	
 		$('#create-carpool-modal').delegate('.add-time', 'click', function(e) {
 			e.preventDefault();
 			var row = $('#create-carpool-time-template').html();
