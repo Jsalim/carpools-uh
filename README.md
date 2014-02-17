@@ -20,3 +20,13 @@ This system is meant to create a carpool system for the University of Hawaii fac
 ![screenshot](https://raw.github.com/CarpoolsUH/ui-mockup/gh-pages/img/cover.png)
 
 ![screenshot](https://raw.github.com/CarpoolsUH/ui-mockup/gh-pages/img/main.png)
+
+
+Installation
+-------------
+
+Simply download, install, sign-in and run app.
+
+Usage
+--------------
+Find or create carpools to UH Manoa at various times and locations.
