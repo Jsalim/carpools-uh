@@ -10,18 +10,19 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-/**
- *  Home Page
- */
-.home .navbar {
+.navbar {
   border-radius: 0;
   border-width: 0;
   margin-bottom: 0;
 }
 
-.home .navbar-header.pull-right .navbar-brand {
+.navbar-header.pull-right .navbar-brand {
   font-size: 14px;
 }
+
+/**
+ *  Home Page
+ */
 
 .home-header {
   background-image: url('../images/manoa.jpg');
@@ -55,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 .home-section h2 span {
   display: inline-block;
   white-space: nowrap;
-  width: 45%;
+  width: 40%;
 }
 
 .home-section h2 span:first-child {
