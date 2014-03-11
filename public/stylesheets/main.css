@@ -1,0 +1,76 @@
+/**
+ *  General Styles
+ */
+body {
+  font-family: 'Roboto';
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Condensed';
+  font-weight: bold;
+}
+
+/**
+ *  Home Page
+ */
+.home .navbar {
+  border-radius: 0;
+  border-width: 0;
+  margin-bottom: 0;
+}
+
+.home .navbar-header.pull-right .navbar-brand {
+  font-size: 14px;
+}
+
+.home-header {
+  background-image: url('../images/manoa.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 80px 0;
+  text-align: center;
+  width: 100%
+}
+
+.home-header h1 {
+  color: white;
+  font-size: 64px;
+  font-weight: bold;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-section {
+  background-color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+.home-section.alt {
+  background-color: #e5e5e5;
+}
+
+.home-section h2 span {
+  display: inline-block;
+  white-space: nowrap;
+  width: 45%;
+}
+
+.home-section h2 span:first-child {
+  text-align: right;
+}
+
+.home-section h2 span:last-child {
+  text-align: left;
+}
+
+.home-road {
+  background-color: #333;
+  padding: 20px; 
+}
+
+.home-road-line {
+  border-top: 3px dashed #ff0;
+}

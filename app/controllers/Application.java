@@ -7,8 +7,12 @@ import views.html.*;
 
 public class Application extends Controller {
 
-    public static Result index() {
-        return ok(index.render("Your new application is ready."));
-    }
+  /**
+   *  This is the home page.
+   *  This page basically a static page with information and a login button.
+   */
+  public static Result home() {
+    return ok(Home.render("Carpools UH"));
+  }
 
 }
