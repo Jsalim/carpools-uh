@@ -1,10 +1,10 @@
-@(title: String)(content: Html)
+@(data: controllers.Data)(content: Html)
 
 <!DOCTYPE html>
 
 <html>
 <head>
-  <title>@title</title>
+  <title>@data.get("pageTitle")</title>
 
   <!-- Site Icon -->
   <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">

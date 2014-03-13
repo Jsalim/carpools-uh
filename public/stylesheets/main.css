@@ -10,19 +10,20 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-.navbar {
+
+/**
+ *  Home Page
+ */
+
+.home .navbar {
   border-radius: 0;
   border-width: 0;
   margin-bottom: 0;
 }
 
-.navbar-header.pull-right .navbar-brand {
+.home .navbar-header.pull-right .navbar-brand {
   font-size: 14px;
 }
-
-/**
- *  Home Page
- */
 
 .home-header {
   background-image: url('../images/manoa.jpg');
