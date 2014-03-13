@@ -37,4 +37,14 @@ public class Application extends Controller {
     return ok(AppProfile.render(data));
   }
 
+  /**
+   *  This is the profile page.
+   */
+  public static Result appHistory() {
+    Data data = new Data();
+    data.set("pageTitle", "Carpools UH");
+    data.set("username", "jsmith");
+    return ok(AppHistory.render(data));
+  }
+
 }
