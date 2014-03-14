@@ -22,6 +22,9 @@ https://github.com/CarpoolsUH/carpools-uh/wiki/Related-Technologies
 Live mockup
 http://carpoolsuh.github.io/ui-mockup/
 
+Lucid-Chart ER Diagram
+http://www.lucidchart.com/invitations/accept/5322b117-cbcc-40e6-89bd-69b80a009433
+
 Introduction
 --------------
 
