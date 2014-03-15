@@ -2,11 +2,10 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
-
 import views.html.*;
 
 public class Application extends Controller {
-
+  
   /**
    *  This is the home page.
    *  This page basically a static page with information and a login button.
@@ -27,7 +26,7 @@ public class Application extends Controller {
     data.set("username", "jsmith");
     return ok(AppInterface.render(data));
   }
-
+  
   /**
    *  This is the Logout page.
    *  This is basically the logout section no page as of yet.
