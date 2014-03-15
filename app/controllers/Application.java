@@ -21,10 +21,7 @@ public class Application extends Controller {
    *  This page does not do anything as CAS login is currently not available.
    */
   public static Result login() {
-    Data data = new Data();
-    data.set("pageTitle", "Carpools UH");
-    data.set("username", "jsmith");
-    return ok(AppInterface.render(data));
+    return redirect("/app");
   }
   
   /**
@@ -32,9 +29,7 @@ public class Application extends Controller {
    *  This is basically the logout section no page as of yet.
    */
   public static Result logout() {
-    Data data = new Data();
-    data.set("pageTitle", "Carpools UH");
-    return ok(Home.render(data));
+    return redirect("/");
   }
   
   /**
