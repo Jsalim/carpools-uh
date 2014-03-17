@@ -4,8 +4,11 @@
 
 # Home page
 GET     /                           controllers.Application.home()
+
+# Login
 GET     /login                      controllers.Application.login()
 GET     /logout                     controllers.Application.logout()
+POST    /postLogin                  controllers.Application.postLogin()
 
 # Application pages
 GET     /app                        controllers.Application.appInterface()

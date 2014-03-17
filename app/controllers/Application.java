@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import play.*;
 import play.mvc.*;
 import views.html.*;
@@ -21,7 +23,18 @@ public class Application extends Controller {
    *  This page does not do anything as CAS login is currently not available.
    */
   public static Result login() {
-    return redirect("/app");
+    String url = routes.Application.postLogin().absoluteURL(request());
+    try{
+      return redirect("https://cas-test.its.hawaii.edu/cas/login?service=" + URLEncoder.encode(url, "UTF-8"));
+    } catch(UnsupportedEncodingException e) { 
+      return redirect("/");
+    }
+  }
+
+  public static Result postLogin() {
+    Data data = new Data();
+    data.set("pageTitle", "Carpools UH - Post Login");
+    return ok(Home.render(data));
   }
   
   /**
