@@ -24,6 +24,10 @@ public class User extends Model{
   private String phone;
   //User's comment
   private String comment;
+  //User's personal picture
+  private String picSelf;
+  //User's car picture
+  private String picCar;
   
   /**
    * The EBean ORM finder method for database queries.
@@ -43,13 +47,25 @@ public class User extends Model{
    * @param phone Users phone number.
    * @param comment Users extra comment.
    */
-  public User(long id, String name, String uhLogin, String location, String phone, String comment){
-    this.setId(id);
-    this.setName(name);
-    this.setUhLogin(uhLogin);
-    this.setLocation(location);
-    this.setPhone(phone);
-    this.setComment(comment);
+  public User(long id, String name, String uhLogin, String location, String phone, String comment, String picSelf, String picCar){
+    this.id = id;
+    this.name = name;
+    this.uhLogin = uhLogin;
+    this.location = location;
+    this.phone = phone;
+    this.comment = comment;
+    this.picSelf = picSelf;
+    this.picCar = picCar;
+  }
+  
+  public User(String name, String uhLogin, String location, String phone, String comment, String picSelf, String picCar){
+    this.name = name;
+    this.uhLogin = uhLogin;
+    this.location = location;
+    this.phone = phone;
+    this.comment = comment;
+    this.picSelf = picSelf;
+    this.picCar = picCar;
   }
 
   /**
@@ -134,6 +150,34 @@ public class User extends Model{
    */
   public void setComment(String comment) {
     this.comment = comment;
+  }
+
+  /**
+   * @return the picSelf
+   */
+  public String getPicSelf() {
+    return picSelf;
+  }
+
+  /**
+   * @param picSelf the picSelf to set
+   */
+  public void setPicSelf(String picSelf) {
+    this.picSelf = picSelf;
+  }
+
+  /**
+   * @return the picCar
+   */
+  public String getPicCar() {
+    return picCar;
+  }
+
+  /**
+   * @param picCar the picCar to set
+   */
+  public void setPicCar(String picCar) {
+    this.picCar = picCar;
   }
   
 }
