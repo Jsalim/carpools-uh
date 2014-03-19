@@ -1,5 +1,7 @@
 package models;
 
+import models.formdata.UserFormData;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;

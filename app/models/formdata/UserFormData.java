@@ -1,10 +1,5 @@
 package models.formdata;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-
 public class UserFormData {
 
   /** UH user ID */
