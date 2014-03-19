@@ -1,183 +1,120 @@
 package models;
 
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
-import play.db.ebean.Model;
-import play.db.ebean.Model.Finder;
+import java.util.ArrayList;
 
-public class User extends Model{
+public class User {
+
+  /*
+   * User database management. Static scope.
+   **************************************************************************/
+
+  /** Map of users. */
+  private static Map<Long, User> users = new HashMap<Long, User>();
 
   /**
-   * 
+   * Adds a new <code>User</code> to the database.
+   * @param id The <code>User</code>'s UH id. Must be unique.
+   * @param username The <code>User</code>'s UH username.
+   * @param firstName The <code>User</code>'s first name.
+   * @param lastName The <code>User</code>'s last name
+   * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>id</code> already exists, returns null.
    */
-  private static final long serialVersionUID = -5255740610156537447L;
-  
-  
-  //User's ID
+  public static User add(String id, String username, String firstName, String lastName) {
+    if(users.get(id) == null) {
+      User user = new User(id, username, firstName, lastName);
+      users.put(id, user); 
+      return user;
+    }
+    return null;
+  }
+
+  /**
+   * Gets a <code>User</code> by <code>id</code>.
+   * @return Returns the <code>User</code> with the given <code>id</code>. If the <code>User</code> does not exists, returns null.
+   */
+  public static User get(String id) {
+    User user = users.get(id);
+    return user;
+  }
+
+  /**
+   * Gets all <code>User</code>s.
+   * @return Returns a List of <code>User</code>s.
+   */
+  public static List<User> getAll() {
+    return new ArrayList<User>(users.values());
+  }
+
+  /*
+   * User instance scope.
+   **************************************************************************/
+
+  /** UH user ID */
   private long id;
-  //User's name
-  private String name;
-  //User's uh login/email
-  private String uhLogin;
-  //User's origin
-  private String location;
-  //User's phone
-  private String phone;
-  //User's comment
-  private String comment;
-  //User's personal picture
-  private String picSelf;
-  //User's car picture
-  private String picCar;
-  
+  /** UH username */
+  private String username;
+  private String firstName;
+  private String lastName;
+
   /**
-   * The EBean ORM finder method for database queries.
-   * 
-   * @return The finder method for Surfers.
+   * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
    */
-  public static Finder<Long, User> find() {
-    return new Finder<Long, User>(Long.class, User.class);
-  }
-  
-  /**
-   * Creates a User.
-   * @param id Users id.
-   * @param name Users name.
-   * @param uhLogin Users login/email.
-   * @param location Users origin
-   * @param phone Users phone number.
-   * @param comment Users extra comment.
-   */
-  public User(long id, String name, String uhLogin, String location, String phone, String comment, String picSelf, String picCar){
+  public User(long id, String username, String firstName, String lastName){
     this.id = id;
-    this.name = name;
-    this.uhLogin = uhLogin;
-    this.location = location;
-    this.phone = phone;
-    this.comment = comment;
-    this.picSelf = picSelf;
-    this.picCar = picCar;
-  }
-  
-  public User(String name, String uhLogin, String location, String phone, String comment, String picSelf, String picCar){
-    this.name = name;
-    this.uhLogin = uhLogin;
-    this.location = location;
-    this.phone = phone;
-    this.comment = comment;
-    this.picSelf = picSelf;
-    this.picCar = picCar;
+    this.username = username;
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 
   /**
-   * @return the id
+   * @return UH id.
    */
   public long getId() {
-    return id;
+    return this.id;
   }
 
   /**
-   * @param id the id to set
+   * @return UH username.
    */
-  public void setId(long id) {
-    this.id = id;
+  public long getUsername() {
+    return this.username;
   }
 
   /**
-   * @return the name
+   * @return Full name, first and last.
    */
   public String getName() {
-    return name;
+    return this.firstName + " " + this.lastName;
   }
 
   /**
-   * @param name the name to set
+   * @return First name.
    */
-  public void setName(String name) {
-    this.name = name;
+  public String getFirstName() {
+    return this.firstName;
   }
 
   /**
-   * @return the uhLogin
+   * Sets the first name.
    */
-  public String getUhLogin() {
-    return uhLogin;
+  public void setFirstName(String value) {
+    this.firstName = value;
   }
 
   /**
-   * @param uhLogin the uhLogin to set
+   * @return Last name.
    */
-  public void setUhLogin(String uhLogin) {
-    this.uhLogin = uhLogin;
+  public String getLastName() {
+    return this.lastName;
   }
 
   /**
-   * @return the location
+   * Sets the last name.
    */
-  public String getLocation() {
-    return location;
+  public void setLastName(String value) {
+    this.lastName = value;
   }
-
-  /**
-   * @param location the location to set
-   */
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  /**
-   * @return the phone
-   */
-  public String getPhone() {
-    return phone;
-  }
-
-  /**
-   * @param phone the phone to set
-   */
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-  /**
-   * @return the comment
-   */
-  public String getComment() {
-    return comment;
-  }
-
-  /**
-   * @param comment the comment to set
-   */
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
-  /**
-   * @return the picSelf
-   */
-  public String getPicSelf() {
-    return picSelf;
-  }
-
-  /**
-   * @param picSelf the picSelf to set
-   */
-  public void setPicSelf(String picSelf) {
-    this.picSelf = picSelf;
-  }
-
-  /**
-   * @return the picCar
-   */
-  public String getPicCar() {
-    return picCar;
-  }
-
-  /**
-   * @param picCar the picCar to set
-   */
-  public void setPicCar(String picCar) {
-    this.picCar = picCar;
-  }
-  
 }
