@@ -69,6 +69,10 @@ public class Application extends Controller {
     return ok(AppProfile.render(data));
   }
 
+  public static Result saveProfile() {
+    return redirect("/app/profile");
+  }
+
   /**
    *  This is the profile page.
    */

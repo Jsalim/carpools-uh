@@ -15,54 +15,58 @@
   </div>
 
   <h1>Profile</h1>
-
-  <div class="row">
-    <div class="col-sm-6  col-md-4 col-lg-3">
-      <label>Yourself</label>
-      <a class="thumbnail" href="#">
-        <img src="@routes.Assets.at("images/default.png")">
-      </a>
-    </div>
-    <div class="col-sm-6  col-md-4 col-lg-3">
-      <label>Your car</label>
-      <a class="thumbnail" href="#">
-        <img src="@routes.Assets.at("images/default.png")">
-      </a>
-    </div>
-  </div>
-
-  <hr/>
-
-  <h2>
-    <label>
-      <input type="checkbox" /> Driver
-      <small>(Check to enable other users to find and request a ride from you)</small>
-    </label>
-  </h2>
-
-  <div class="row">
-    <div class="col-sm-6 form-group">
-      <label>Origin</label>  
-      <input class="form-control" type="text" placeholder="Where do you live?" />
-    </div>
-
-    <div class="col-sm-6 form-group">
-      <label>Preferences</label>
-      <div class="checkbox">
-        <label><input type="checkbox" /> No Smoking</label>
+  <form action="saveProfile" method="post">
+    <div class="row">
+      <div class="col-sm-6  col-md-4 col-lg-3">
+        <label>Yourself</label>
+        <a class="thumbnail" href="#">
+          <img src="@routes.Assets.at("images/default.png")">
+        </a>
       </div>
-      <div class="checkbox">
-        <label><input type="checkbox" /> No Eating</label>
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox" /> No Drinking</label>
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox" /> Same Gender</label>
+      <div class="col-sm-6  col-md-4 col-lg-3">
+        <label>Your car</label>
+        <a class="thumbnail" href="#">
+          <img src="@routes.Assets.at("images/default.png")">
+        </a>
       </div>
     </div>
-  </div>
 
+    <hr/>
+
+    <h2>
+      <label>
+        <input type="checkbox" /> Driver
+        <small>(Check to enable other users to find and request a ride from you)</small>
+      </label>
+    </h2>
+
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <label>Origin</label>  
+        <input class="form-control" type="text" placeholder="Where do you live?" />
+      </div>
+
+      <div class="col-sm-6 form-group">
+        <label>Preferences</label>
+        <div class="checkbox">
+          <label><input type="checkbox" /> No Smoking</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" /> No Eating</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" /> No Drinking</label>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" /> Same Gender</label>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <input class="btn btn-primary" type="submit" value="Save Changes" />
+    </div>
+  </form>
 </div>
 
 }
