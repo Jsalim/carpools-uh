@@ -2,9 +2,12 @@ package controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+
 import play.*;
 import play.mvc.*;
 import views.html.*;
+
+import models.*;
 
 public class Application extends Controller {
   
@@ -52,7 +55,7 @@ public class Application extends Controller {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
     data.set("username", "jsmith");
-    //data.set("drivers");
+    data.set("drivers", User.getAllDrivers());
     return ok(AppInterface.render(data));
   }
 
