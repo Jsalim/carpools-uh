@@ -54,7 +54,7 @@ public class Application extends Controller {
   public static Result appInterface() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
-    data.set("username", "jsmith");
+    data.set("user", User.getFirst());
     data.set("drivers", User.getAllDrivers());
     return ok(AppInterface.render(data));
   }
@@ -65,7 +65,7 @@ public class Application extends Controller {
   public static Result appProfile() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
-    data.set("username", "jsmith");
+    data.set("user", User.getFirst());
     return ok(AppProfile.render(data));
   }
 
@@ -75,7 +75,7 @@ public class Application extends Controller {
   public static Result appHistory() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
-    data.set("username", "jsmith");
+    data.set("user", User.getFirst());
     return ok(AppHistory.render(data));
   }
 

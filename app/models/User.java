@@ -42,6 +42,14 @@ public class User {
   }
 
   /**
+   * Gets the first <code>User</code>.
+   * @return Returns the first <code>User</code>.
+   */
+  public static User getFirst() {
+    return (User) users.entrySet().iterator().next().getValue();
+  }
+
+  /**
    * Gets all <code>User</code>s.
    * @return Returns a <code>List</code> of <code>User</code>s.
    */
@@ -105,7 +113,7 @@ public class User {
   /**
    * @return Full name, first and last.
    */
-  public String getName() {
+  public String getFullName() {
     return this.firstName + " " + this.lastName;
   }
 

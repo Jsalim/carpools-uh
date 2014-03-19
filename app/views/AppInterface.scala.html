@@ -14,4 +14,14 @@
   </p>
 </div>
 
+<h2>Drivers</h2>
+<ul class="drivers">
+  @for(driver <- data.getUsers("drivers")) {
+    <li>
+      @driver.getFullName()
+    </li>
+  }
+</ul> 
+
+
 }
