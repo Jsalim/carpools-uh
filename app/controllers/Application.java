@@ -4,10 +4,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import play.*;
+import play.data.Form;
 import play.mvc.*;
 import views.html.*;
 
 import models.*;
+import models.formdata.*;
 
 public class Application extends Controller {
   
@@ -70,6 +72,9 @@ public class Application extends Controller {
   }
 
   public static Result saveProfile() {
+    Form<UserFormData> userForm = Form.form(UserFormData.class);
+    UserFormData userFormData = userForm.bindFromRequest().get();
+    User.save(userFormData);
     return redirect("/app/profile");
   }
 

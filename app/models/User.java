@@ -71,6 +71,14 @@ public class User {
     return drivers;
   }
 
+  public static User save(UserFormData formData) {
+    User user = users.get(formData.id);
+    user.setFirstName(formData.firstName);
+    //...
+    return user;
+  }
+
+
   /*
    * User instance scope.
    **************************************************************************/
