@@ -28,7 +28,7 @@ public class Application extends Controller {
    *  This page does not do anything as CAS login is currently not available.
    */
   public static Result login() {
-    String url = routes.Application.postLogin().absoluteURL(request());
+    String url = routes.Application.loginVerify().absoluteURL(request());
     try{
       return redirect("https://cas-test.its.hawaii.edu/cas/login?service=" + URLEncoder.encode(url, "UTF-8"));
     } catch(UnsupportedEncodingException e) { 
@@ -36,7 +36,7 @@ public class Application extends Controller {
     }
   }
 
-  public static Result postLogin() {
+  public static Result loginVerify() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH - Post Login");
     return ok(Home.render(data));
