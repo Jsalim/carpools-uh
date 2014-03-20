@@ -1,7 +1,7 @@
 package models;
 
 import models.formdata.UserFormData;
-
+import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +28,7 @@ public class User {
   public static User add(long id, String username, String firstName, String lastName, boolean isDriver, String comment) {
     if(users.get(id) == null) {
       User user = new User(id, username, firstName, lastName, isDriver, comment);
-      users.put(id, user); 
+      users.put(id, user);
       return user;
     }
     return null;
@@ -38,9 +38,24 @@ public class User {
    * Gets a <code>User</code> by <code>id</code>.
    * @return Returns the <code>User</code> with the given <code>id</code>. If the <code>User</code> does not exists, returns null.
    */
-  public static User get(String id) {
+  public static User get(long id) {
     User user = users.get(id);
     return user;
+  }
+
+  /**
+   * Gets a <code>User</code> by their <code>username</code>.
+   * @return Returns the <code>User</code> with the given <code>username</code>. If the <code>User</code> does not exists, returns null.
+   */
+  public static User get(String username) {
+    Iterator<User> iterator = users.values().iterator();
+    while(iterator.hasNext()) {
+      User user = iterator.next();
+      if(user.getUsername().equals(username)) {
+        return user;
+      }
+    }
+    return null;
   }
 
   /**
