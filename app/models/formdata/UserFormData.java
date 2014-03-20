@@ -4,8 +4,7 @@ public class UserFormData {
 
   /** UH user ID */
   public long id;
-  public String firstName;
-  public String lastName;
+  public String name;
   public boolean isDriver;
   public String comment;
 
@@ -14,8 +13,7 @@ public class UserFormData {
    */
   public UserFormData() {
     this.id = 0;
-    this.firstName = "";
-    this.lastName = "";
+    this.name = "";
     this.isDriver = false;
     this.comment = "";
   }

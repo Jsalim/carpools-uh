@@ -15,23 +15,31 @@ public class User {
 
   /** Map of users. */
   private static Map<Long, User> users = new HashMap<Long, User>();
+  /** Used to keep track of the id for new Users. Needed because CAS login does not provide the userid. */
+  private static long _id = 0;
 
   /**
    * Adds a new <code>User</code> to the database.
    * @param id The <code>User</code>'s UH id. Must be unique.
    * @param username The <code>User</code>'s UH username.
-   * @param firstName The <code>User</code>'s first name.
-   * @param lastName The <code>User</code>'s last name.
+   * @param name The <code>User</code>'s name.
    * @param isDriver If the <code>User</code> is a driver.
-   * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>id</code> already exists, returns null.
+   * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>id</code> already exists, returns the existing <code>User</code>.
    */
-  public static User add(long id, String username, String firstName, String lastName, boolean isDriver, String comment) {
-    if(users.get(id) == null) {
-      User user = new User(id, username, firstName, lastName, isDriver, comment);
-      users.put(id, user);
-      return user;
+  public static User add(long id, String username, String name, boolean isDriver, String comment) {
+    if(id == -1) {
+      id = User._id++;
     }
-    return null;
+    User user = users.get(id);
+    if(user == null) {
+      user = new User(id, username, name, isDriver, comment);
+      users.put(id, user);
+    }
+    return user;
+  }
+
+  public static User add(long id, String username, String name) {
+    return User.add(id, username, name, false, "");
   }
 
   /**
@@ -88,13 +96,15 @@ public class User {
     return drivers;
   }
 
+  /**
+   * Saves a <code>User</code> based on the <code>UserFormData</code> given.
+   */
   public static User save(UserFormData formData) {
     User user = users.get(formData.id);
-    user.setFirstName(formData.firstName);
+    user.setName(formData.name);
     //...
     return user;
   }
-
 
   /*
    * User instance scope.
@@ -104,19 +114,17 @@ public class User {
   private long id;
   /** UH username */
   private String username;
-  private String firstName;
-  private String lastName;
+  private String name;
   private boolean isDriver;
   private String comment;
 
   /**
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
    */
-  public User(long id, String username, String firstName, String lastName, boolean isDriver, String comment){
+  public User(long id, String username, String name, boolean isDriver, String comment){
     this.id = id;
     this.username = username;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.name = name;
     this.isDriver = isDriver;
     this.comment = comment;
   }
@@ -136,38 +144,17 @@ public class User {
   }
 
   /**
-   * @return Full name, first and last.
+   * @return Name.
    */
-  public String getFullName() {
-    return this.firstName + " " + this.lastName;
+  public String getName() {
+    return this.name;
   }
 
   /**
-   * @return First name.
+   * Sets the name.
    */
-  public String getFirstName() {
-    return this.firstName;
-  }
-
-  /**
-   * Sets the first name.
-   */
-  public void setFirstName(String value) {
-    this.firstName = value;
-  }
-
-  /**
-   * @return Last name.
-   */
-  public String getLastName() {
-    return this.lastName;
-  }
-
-  /**
-   * Sets the last name.
-   */
-  public void setLastName(String value) {
-    this.lastName = value;
+  public void setName(String value) {
+    this.name = value;
   }
 
   /**
