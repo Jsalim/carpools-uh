@@ -11,12 +11,14 @@ import org.w3c.dom.Document;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.*;
 
 public class Application extends Controller {
   
   private static final String CAS_LOGIN = "https://cas-test.its.hawaii.edu/cas/login";
   private static final String CAS_VALIDATE = "https://cas-test.its.hawaii.edu/cas/serviceValidate";
+  private static final String CAS_LOGOUT = "https://cas-test.its.hawaii.edu/cas/logout";
 
   /**
    * This is the home page.
@@ -30,7 +32,7 @@ public class Application extends Controller {
   
   /**
    * This is the Login page.
-   * This page does not do anything as CAS login is currently not available.
+   * Redirects to CAS login, verifies the user, and redirects to the app interface
    */
   public static Result login() throws Exception {
     Map<String, String[]> query = request().queryString();
@@ -62,16 +64,19 @@ public class Application extends Controller {
 
   /**
    * This is the Logout page.
-   * This is basically the logout section no page as of yet.
+   * Clears the session and redirects to the home page.
    */
-  public static Result logout() {
+  public static Result logout() throws Exception {
     session().clear();
-    return redirect(routes.Application.home());
+    String serviceURL = routes.Application.home().absoluteURL(request());
+    serviceURL = URLEncoder.encode(serviceURL, "UTF-8");
+    return redirect(CAS_LOGOUT + "?service=" + serviceURL);
   }
   
   /**
    * This is the main interface page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result appInterface() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
@@ -83,16 +88,18 @@ public class Application extends Controller {
   /**
    * This is the profile page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result appProfile() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
-    
+    data.set("user", User.get(session().get("username")));
     return ok(AppProfile.render(data));
   }
 
   /**
    * Save the profile information.
    */
+  @Security.Authenticated(Secured.class)
   public static Result saveProfile() {
     Form<UserFormData> userForm = Form.form(UserFormData.class);
     if(userForm.hasErrors()) {
@@ -110,6 +117,7 @@ public class Application extends Controller {
   /**
    * This is the profile page.
    */
+  @Security.Authenticated(Secured.class)
   public static Result appHistory() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
