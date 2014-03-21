@@ -1,27 +1,69 @@
 @(data: controllers.Data)
 
 @App(data) {
-<div class="alert alert-warning alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <p>
-    <strong>Getting Started</strong>
-  </p>
-  <p>
-    Browse below for available rides. Use the filtering options to quickly find rides relevant to you.
-  </p>
-  <p>
-    If you would like to offer a ride, click the "Create Carpool" button on the right to get started.
-  </p>
+
+<div class="interface">
+
+  <div class="alert alert-warning alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <p>
+      <strong>Getting Started</strong>
+    </p>
+    <p>
+      Browse below for available rides. Use the filtering options to quickly find rides relevant to you.
+    </p>
+    <p>
+      If you would like to offer a ride, click the "Create Carpool" button on the right to get started.
+    </p>
+  </div>
+
+  <h2>Drivers</h2>
+
+  <div class="filters panel panel-info">
+    <div class="panel-heading">Filters</div>
+    <div class="panel-body">
+      <form>
+        <div class="form-group">
+          <label>Locations</label>
+          <div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="Salt Lake" /> Salt Lake</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Days</label>
+          <div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="monday" /> <strong>M</strong>onday</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="monday" /> <strong>T</strong>uesday</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="monday" /> <strong>W</strong>ednesday</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="monday" /> Thu<strong>R</strong>sday</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="monday" /> <strong>F</strong>riday</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <ul class="drivers">
+    @for(driver <- data.getUsers("drivers")) {
+      <li>
+        @driver.getName()
+      </li>
+    }
+  </ul> 
+
 </div>
-
-<h2>Drivers</h2>
-<ul class="drivers">
-  @for(driver <- data.getUsers("drivers")) {
-    <li>
-      @driver.getName()
-    </li>
-  }
-</ul> 
-
 
 }
