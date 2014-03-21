@@ -3,6 +3,7 @@ package controllers;
 import play.mvc.Http.Context;
 import play.mvc.Result;
 import play.mvc.Security;
+import models.User;
 
 /**
  * Authenticator for the application.
@@ -12,7 +13,13 @@ public class Secured extends Security.Authenticator {
 
   @Override
   public String getUsername(Context ctx) {
-    return ctx.session().get("username");
+    String username = ctx.session().get("username");
+    // check if the user is in the in memory database
+    User user = User.get(username);
+    if(user != null) {
+      return username;
+    }
+    return null;
   }
 
   @Override
