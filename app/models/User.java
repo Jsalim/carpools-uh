@@ -133,6 +133,11 @@ public class User {
   private boolean isDriver;
   private String origin;
   private String comment;
+  // preferences
+  private boolean noSmoking;
+  private boolean noEating;
+  private boolean noDrinking;
+  private boolean sameGender;
 
   /**
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
@@ -144,75 +149,104 @@ public class User {
     this.isDriver = isDriver;
     this.origin = location;
     this.comment = comment;
+    this.noSmoking = true;
+    this.noEating = true;
+    this.noDrinking = true;
+    this.sameGender = false;
   }
 
-  /**
-   * @return UH id.
-   */
-  public long getId() {
+  /** Getter for id. */
+  public long id() {
     return this.id;
   }
 
-  /**
-   * @return UH username.
-   */
-  public String getUsername() {
+  /** Getter for username. */
+  public String username() {
     return this.username;
   }
 
-  /**
-   * @return Name.
-   */
-  public String getName() {
+  /** Setter for username. */
+  public String username(String value) {
+    this.username = value;
+  }
+
+  /** Getter for name. */
+  public String name() {
     return this.name;
   }
 
-  /**
-   * Sets the name.
-   */
-  public void setName(String value) {
+  /** Setter for name. */
+  public String name(String value) {
     this.name = value;
   }
 
-  /**
-   * @return If the <code>User</code> is a driver.
-   */
-  public boolean getIsDriver() {
+  /** Getter for isDriver. */
+  public boolean isDriver() {
     return this.isDriver;
   }
 
-  /**
-   * Sets if this <code>User</code> is a driver.
-   */
-  public void setIsDriver(boolean value) {
+  /** Setter for isDriver. */
+  public boolean isDriver(boolean value) {
     this.isDriver = value;
   }
 
-  /**
-   * @return origin.
-   */
-  public String getOrigin() {
+  /** Getter for origin. */
+  public String origin() {
     return this.origin;
   }
 
-  /**
-   * Sets the origin.
-   */
-  public void setOrigin(String value) {
+  /** Setter for origin. */
+  public String origin(String value) {
     this.origin = value;
   }
 
-  /**
-   * @return Comment.
-   */
-  public String getComment() {
+  /** Getter for comment. */
+  public String comment() {
     return this.comment;
   }
 
-  /**
-   * Sets the comment.
-   */
-  public void setComment(String value) {
+  /** Setter for comment. */
+  public String comment(String value) {
     this.comment = value;
+  }
+
+  /** Getter for noSmoking. */
+  public boolean noSmoking() {
+    return this.noSmoking;
+  }
+
+  /** Setter for noSmoking. */
+  public boolean noSmoking(boolean value) {
+    this.noSmoking = value;
+  }
+
+  /** Getter for noEating. */
+  public boolean noEating() {
+    return this.noEating;
+  }
+
+  /** Setter for noEating. */
+  public boolean noEating(boolean value) {
+    this.noEating = value;
+  }
+
+  /** Getter for noDrinking. */
+  public boolean noDrinking() {
+    return this.noDrinking;
+  }
+
+  /** Setter for noDrinking. */
+  public boolean noDrinking(boolean value) {
+    this.noDrinking = value;
+  }
+
+  /** Getter for sameGender. */
+  public boolean sameGender() {
+    return this.sameGender;
+  }
+
+  /** Setter for sameGender. */
+  public boolean sameGender(boolean value) {
+    this.sameGender = value;
   }
 }
