@@ -1,4 +1,4 @@
-@(data: controllers.Data)
+@(data: controllers.Data, userForm: Form[models.formdata.UserFormData])
 
 @App(data) {
 
@@ -15,21 +15,14 @@
   </div>
 
   <h1>Profile</h1>
-  <form action="saveProfile" method="post">
 
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>First Name</label>
-          <input class="form-control" name="firstName" type="text" placeholder="First Name" />
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>Last Name</label>
-          <input class="form-control" name="lastName" type="text" placeholder="Last Name" />
-        </div>
-      </div>
+  @helper.form(routes.Application.saveProfile) {
+
+    <input type="hidden" name="id" value="@userForm("id").value" />
+
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" type="text" name="name" placeholder="Preferred Name" value="@userForm("name").value" />
     </div>
 
     <hr />
@@ -53,7 +46,7 @@
 
     <h2>
       <label>
-        <input type="checkbox" /> Driver
+        <input type="checkbox" name="isDriver" @if(userForm("isDriver").value == "true") { checked }/> Driver
         <small>(Check to enable other users to find and request a ride from you)</small>
       </label>
     </h2>
@@ -84,9 +77,9 @@
     <hr />
 
     <div>
-      <button class="btn btn-lg btn-primary" type="button"><i class="fa fa-check"></i> Save Changes</button>
+      <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-check"></i> Save Changes</button>
     </div>
-  </form>
+  }
 </div>
 
 }

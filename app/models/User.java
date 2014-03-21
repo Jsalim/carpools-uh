@@ -102,6 +102,7 @@ public class User {
   public static User save(UserFormData formData) {
     User user = users.get(formData.id);
     user.setName(formData.name);
+    user.setIsDriver(formData.isDriver);
     //...
     return user;
   }
@@ -112,7 +113,7 @@ public class User {
   public static List<String> getLocations() {
     List<String> locations = new ArrayList<String>();
     for(User user : users.values()) {
-      String location = user.getLocation();
+      String location = user.getOrigin();
       if(location.trim().length() > 0 && !locations.contains(location)) {
         locations.add(location);
       }
@@ -130,7 +131,7 @@ public class User {
   private String username;
   private String name;
   private boolean isDriver;
-  private String location;
+  private String origin;
   private String comment;
 
   /**
@@ -141,7 +142,7 @@ public class User {
     this.username = username;
     this.name = name;
     this.isDriver = isDriver;
-    this.location = location;
+    this.origin = location;
     this.comment = comment;
   }
 
@@ -188,17 +189,17 @@ public class User {
   }
 
   /**
-   * @return location.
+   * @return origin.
    */
-  public String getLocation() {
-    return this.location;
+  public String getOrigin() {
+    return this.origin;
   }
 
   /**
-   * Sets the location.
+   * Sets the origin.
    */
-  public void setLocation(String value) {
-    this.location = value;
+  public void setOrigin(String value) {
+    this.origin = value;
   }
 
   /**

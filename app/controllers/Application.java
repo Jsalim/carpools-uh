@@ -91,10 +91,12 @@ public class Application extends Controller {
    */
   @Security.Authenticated(Secured.class)
   public static Result appProfile() {
+    User user = User.get(session().get("username"));
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
-    data.set("user", User.get(session().get("username")));
-    return ok(AppProfile.render(data));
+    data.set("user", user);
+    Form<UserFormData> userForm = Form.form(UserFormData.class).fill(new UserFormData(user));
+    return ok(AppProfile.render(data, userForm));
   }
 
   /**
@@ -107,7 +109,7 @@ public class Application extends Controller {
       Data data = new Data();
       data.set("pageTitle", "Carpools UH");
       data.set("user", User.get(session().get("username")));
-      return badRequest(AppProfile.render(data));
+      return badRequest(AppProfile.render(data, userForm));
     } else {
       UserFormData userFormData = userForm.bindFromRequest().get();
       User.save(userFormData); 
