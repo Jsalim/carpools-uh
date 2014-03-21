@@ -14,9 +14,19 @@ public class User {
    **************************************************************************/
 
   /** Map of users. */
-  private static Map<Long, User> users = new HashMap<Long, User>();
+  private static Map<String, User> users = new HashMap<String, User>();
   /** Used to keep track of the id for new Users. Needed because CAS login does not provide the userid. */
   private static long _id = 0;
+
+  /**
+   * Adds a new <code>User</code> to the database. Sets default values for most properties.
+   * @param username UH username.
+   * @param name
+   * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>username</code> already exists, returns the existing <code>User</code>.
+   */
+  public static User add(String username, String name) {
+    return User.add(username, name, false, "", "");
+  }
 
   /**
    * Adds a new <code>User</code> to the database.
@@ -24,28 +34,16 @@ public class User {
    * @param name
    * @param isDriver
    * @param origin
-   * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>id</code> already exists, returns the existing <code>User</code>.
+   * @param comment
+   * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>username</code> already exists, returns the existing <code>User</code>.
    */
   public static User add(String username, String name, boolean isDriver, String origin, String comment) {
-    long id = User._id++;
-    User user = users.get(id);
+    User user = users.get(username);
     if(user == null) {
+      long id = User._id++;
       user = new User(id, username, name, isDriver, origin, comment);
-      users.put(id, user);
+      users.put(username, user);
     }
-    return user;
-  }
-
-  public static User add(String username, String name) {
-    return User.add(username, name, false, "", "");
-  }
-
-  /**
-   * Gets a <code>User</code> by <code>id</code>.
-   * @return Returns the <code>User</code> with the given <code>id</code>. If the <code>User</code> does not exists, returns null.
-   */
-  public static User get(long id) {
-    User user = users.get(id);
     return user;
   }
 
@@ -54,14 +52,7 @@ public class User {
    * @return Returns the <code>User</code> with the given <code>username</code>. If the <code>User</code> does not exists, returns null.
    */
   public static User get(String username) {
-    Iterator<User> iterator = users.values().iterator();
-    while(iterator.hasNext()) {
-      User user = iterator.next();
-      if(user.username().equals(username)) {
-        return user;
-      }
-    }
-    return null;
+    return users.get(username);
   }
 
   /**
@@ -98,7 +89,7 @@ public class User {
    * Saves a <code>User</code> based on the <code>UserFormData</code> given.
    */
   public static User save(UserFormData formData) {
-    User user = users.get(formData.id);
+    User user = users.get(formData.username);
     user.name(formData.name);
     user.isDriver(formData.isDriver);
     //...
@@ -146,6 +137,7 @@ public class User {
     this.isDriver = isDriver;
     this.origin = origin;
     this.comment = comment;
+
     this.noSmoking = true;
     this.noEating = true;
     this.noDrinking = true;

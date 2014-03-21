@@ -4,7 +4,7 @@ import models.User;
 
 public class UserFormData {
 
-  public long id;
+  public String username;
   public String name;
   public boolean isDriver;
   public String origin;
@@ -19,7 +19,7 @@ public class UserFormData {
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
    */
   public UserFormData() {
-    this.id = 0;
+    this.username = "";
     this.name = "";
     this.isDriver = false;
     this.origin = "";
@@ -35,7 +35,7 @@ public class UserFormData {
    * Constructor. Fills the form data with the data from the <code>User</code> given.
    */
   public UserFormData(User user) {
-    this.id = user.id();
+    this.username = user.username();
     this.name = user.name();
     this.isDriver = user.isDriver();
     this.origin = user.origin();
