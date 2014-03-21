@@ -22,24 +22,31 @@ public class Data {
   }
 
   /**
-   * Retrieves the value as an <code>Object</code> with the given key.
+   * Retrieves the value as an <code>Object</code>.
    */
   public Object get(String key) {
     return data.get(key);
   }
 
   /**
-   * Retrieves the value as a <code>User</code> with the given key.
+   * Retrieves the value as a <code>User</code>.
    */
   public User getUser(String key) {
     return (User) data.get(key);
   }
 
   /**
-   * Retrieves the value as a <code>List<User></code> with the given key.
+   * Retrieves the value as a <code>List</code> of <code>User</code>s.
    */
   public List<User> getUsers(String key) {
     return (List<User>) data.get(key);
+  }
+
+  /**
+   * Retrieves the value as a <code>List</code> of <code>String</code>s.
+   */
+  public List<String> getStrings(String key) {
+    return (List<String>) data.get(key);
   }
 
 }

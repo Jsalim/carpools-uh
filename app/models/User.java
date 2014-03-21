@@ -26,20 +26,20 @@ public class User {
    * @param isDriver If the <code>User</code> is a driver.
    * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>id</code> already exists, returns the existing <code>User</code>.
    */
-  public static User add(long id, String username, String name, boolean isDriver, String comment) {
+  public static User add(long id, String username, String name, boolean isDriver, String location, String comment) {
     if(id == -1) {
       id = User._id++;
     }
     User user = users.get(id);
     if(user == null) {
-      user = new User(id, username, name, isDriver, comment);
+      user = new User(id, username, name, isDriver, location, comment);
       users.put(id, user);
     }
     return user;
   }
 
   public static User add(long id, String username, String name) {
-    return User.add(id, username, name, false, "");
+    return User.add(id, username, name, false, "", "");
   }
 
   /**
@@ -106,6 +106,20 @@ public class User {
     return user;
   }
 
+  /**
+   * Gets all locations that are in use.
+   */
+  public static List<String> getLocations() {
+    List<String> locations = new ArrayList<String>();
+    for(User user : users.values()) {
+      String location = user.getLocation();
+      if(location.trim().length() > 0 && !locations.contains(location)) {
+        locations.add(location);
+      }
+    }
+    return locations;
+  }
+
   /*
    * User instance scope.
    **************************************************************************/
@@ -116,16 +130,18 @@ public class User {
   private String username;
   private String name;
   private boolean isDriver;
+  private String location;
   private String comment;
 
   /**
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
    */
-  public User(long id, String username, String name, boolean isDriver, String comment){
+  public User(long id, String username, String name, boolean isDriver, String location, String comment){
     this.id = id;
     this.username = username;
     this.name = name;
     this.isDriver = isDriver;
+    this.location = location;
     this.comment = comment;
   }
 
@@ -169,6 +185,20 @@ public class User {
    */
   public void setIsDriver(boolean value) {
     this.isDriver = value;
+  }
+
+  /**
+   * @return location.
+   */
+  public String getLocation() {
+    return this.location;
+  }
+
+  /**
+   * Sets the location.
+   */
+  public void setLocation(String value) {
+    this.location = value;
   }
 
   /**

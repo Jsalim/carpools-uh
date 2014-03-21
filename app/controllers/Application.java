@@ -82,6 +82,7 @@ public class Application extends Controller {
     data.set("pageTitle", "Carpools UH");
     data.set("user", User.get(session().get("username")));
     data.set("drivers", User.getAllDrivers());
+    data.set("locations", User.getLocations());
     return ok(AppInterface.render(data));
   }
 
