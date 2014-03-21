@@ -7,7 +7,7 @@ import models.User;
 
 /**
  * Authenticator for the application.
- * See the <code>http://www.playframework.com/documentation/2.2.x/api/java/index.html</code> for more info.
+ * See the <code>http://www.playframework.com/documentation/2.2.x/api/java/play/mvc/Security.Authenticator.html</code> for more info.
  */
 public class Secured extends Security.Authenticator {
 
