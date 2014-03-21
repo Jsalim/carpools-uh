@@ -20,26 +20,24 @@ public class User {
 
   /**
    * Adds a new <code>User</code> to the database.
-   * @param id The <code>User</code>'s UH id. Must be unique.
-   * @param username The <code>User</code>'s UH username.
-   * @param name The <code>User</code>'s name.
-   * @param isDriver If the <code>User</code> is a driver.
+   * @param username UH username.
+   * @param name
+   * @param isDriver
+   * @param origin
    * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>id</code> already exists, returns the existing <code>User</code>.
    */
-  public static User add(long id, String username, String name, boolean isDriver, String location, String comment) {
-    if(id == -1) {
-      id = User._id++;
-    }
+  public static User add(String username, String name, boolean isDriver, String origin, String comment) {
+    long id = User._id++;
     User user = users.get(id);
     if(user == null) {
-      user = new User(id, username, name, isDriver, location, comment);
+      user = new User(id, username, name, isDriver, origin, comment);
       users.put(id, user);
     }
     return user;
   }
 
-  public static User add(long id, String username, String name) {
-    return User.add(id, username, name, false, "", "");
+  public static User add(String username, String name) {
+    return User.add(username, name, false, "", "");
   }
 
   /**
@@ -59,7 +57,7 @@ public class User {
     Iterator<User> iterator = users.values().iterator();
     while(iterator.hasNext()) {
       User user = iterator.next();
-      if(user.getUsername().equals(username)) {
+      if(user.username().equals(username)) {
         return user;
       }
     }
@@ -89,7 +87,7 @@ public class User {
   public static List<User> getAllDrivers() {
     List<User> drivers = new ArrayList<User>();
     for(User user : users.values()) {
-      if(user.getIsDriver()) {
+      if(user.isDriver()) {
         drivers.add(user);
       }
     }
@@ -101,8 +99,8 @@ public class User {
    */
   public static User save(UserFormData formData) {
     User user = users.get(formData.id);
-    user.setName(formData.name);
-    user.setIsDriver(formData.isDriver);
+    user.name(formData.name);
+    user.isDriver(formData.isDriver);
     //...
     return user;
   }
@@ -113,7 +111,7 @@ public class User {
   public static List<String> getLocations() {
     List<String> locations = new ArrayList<String>();
     for(User user : users.values()) {
-      String location = user.getOrigin();
+      String location = user.origin();
       if(location.trim().length() > 0 && !locations.contains(location)) {
         locations.add(location);
       }
@@ -125,7 +123,6 @@ public class User {
    * User instance scope.
    **************************************************************************/
 
-  /** UH user ID */
   private long id;
   /** UH username */
   private String username;
@@ -142,12 +139,12 @@ public class User {
   /**
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
    */
-  public User(long id, String username, String name, boolean isDriver, String location, String comment){
+  public User(long id, String username, String name, boolean isDriver, String origin, String comment){
     this.id = id;
     this.username = username;
     this.name = name;
     this.isDriver = isDriver;
-    this.origin = location;
+    this.origin = origin;
     this.comment = comment;
     this.noSmoking = true;
     this.noEating = true;
@@ -167,7 +164,7 @@ public class User {
 
   /** Setter for username. */
   public String username(String value) {
-    this.username = value;
+    return (this.username = value);
   }
 
   /** Getter for name. */
@@ -177,7 +174,7 @@ public class User {
 
   /** Setter for name. */
   public String name(String value) {
-    this.name = value;
+    return (this.name = value);
   }
 
   /** Getter for isDriver. */
@@ -187,7 +184,7 @@ public class User {
 
   /** Setter for isDriver. */
   public boolean isDriver(boolean value) {
-    this.isDriver = value;
+    return (this.isDriver = value);
   }
 
   /** Getter for origin. */
@@ -197,7 +194,7 @@ public class User {
 
   /** Setter for origin. */
   public String origin(String value) {
-    this.origin = value;
+    return (this.origin = value);
   }
 
   /** Getter for comment. */
@@ -207,7 +204,7 @@ public class User {
 
   /** Setter for comment. */
   public String comment(String value) {
-    this.comment = value;
+    return (this.comment = value);
   }
 
   /** Getter for noSmoking. */
@@ -217,7 +214,7 @@ public class User {
 
   /** Setter for noSmoking. */
   public boolean noSmoking(boolean value) {
-    this.noSmoking = value;
+    return (this.noSmoking = value);
   }
 
   /** Getter for noEating. */
@@ -227,7 +224,7 @@ public class User {
 
   /** Setter for noEating. */
   public boolean noEating(boolean value) {
-    this.noEating = value;
+    return (this.noEating = value);
   }
 
   /** Getter for noDrinking. */
@@ -237,7 +234,7 @@ public class User {
 
   /** Setter for noDrinking. */
   public boolean noDrinking(boolean value) {
-    this.noDrinking = value;
+    return (this.noDrinking = value);
   }
 
   /** Getter for sameGender. */
@@ -247,6 +244,6 @@ public class User {
 
   /** Setter for sameGender. */
   public boolean sameGender(boolean value) {
-    this.sameGender = value;
+    return (this.sameGender = value);
   }
 }

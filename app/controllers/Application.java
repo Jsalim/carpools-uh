@@ -54,7 +54,7 @@ public class Application extends Controller {
           String username = doc.getElementsByTagName("cas:user").item(0).getTextContent();
           session().clear();
           session("username", username);
-          User.add(-1, username, "");
+          User.add(username, "");
           return redirect(routes.Application.appInterface());
         }
       }
