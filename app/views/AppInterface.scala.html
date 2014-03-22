@@ -57,11 +57,54 @@
     </div>
   </div>
 
-
+        
+        
   <ul class="drivers">
     @for(driver <- data.getUsers("drivers")) {
       <li>
-        @driver.name()
+        <div class="driver">
+            <div class="driver-content">
+                <a class="thumbnail carpool" href=""
+                            data-toggle="modal" data-target="#carpool-info-modal"
+                            data-name="{{name}}" data-phone="{{phone}}" data-location="{{location}}" data-comment="{{comment}}"
+                            data-monday="{{days.m}}" data-tuesday="{{days.t}}" data-wednesday="{{days.w}}" data-thursday="{{days.r}}" data-friday="{{days.f}}">
+                    <div class="image">
+                        
+                    </div>
+                    <div class="caption">
+                        <p><strong>@driver.name</strong>@driver.username</p>
+                        <p>@driver.comment</p>
+                        <div class="table-container">
+                            <table class="table table-condensed">
+                                <thead><tr>
+                                    <th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
+                                </tr></thead>
+                                <tbody><tr>
+                                    <td></td>
+                                </tr></tbody>
+                            </table>
+                        </div>
+                        <div class="preferences">
+                            @if(driver.noSmoking==false){}else{
+                               <span class="img-icon smoking" data-toggle="tooltip" data-placement="top" title="Smoking OK"></span>
+                            }
+                            @if(driver.noEating==false){}else{
+                               <span class="img-icon eating" data-toggle="tooltip" data-placement="top" title="Eating OK"></span>
+                            }
+                            @if(driver.noDrinking==false){}else{
+                               <span class="img-icon drinking" data-toggle="tooltip" data-placement="top" title="Drinking OK"></span>
+                            }
+                        </div>
+                        <div class="meta">
+                            @if(driver.sameGender==false){
+                                <span class="label label-success"><i class="glyphicon glyphicon-star"></i> {{rating}}</span>
+                            }
+                            <span class="label label-default">@driver.origin</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
       </li>
     }
   </ul> 
