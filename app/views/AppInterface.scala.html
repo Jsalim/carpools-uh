@@ -59,10 +59,8 @@
 
         
         
-  <ul class="drivers">
+  <div class="driver">
     @for(driver <- data.getUsers("drivers")) {
-      <li>
-        <div class="driver">
             <div class="driver-content">
                 <a class="thumbnail carpool" href=""
                             data-toggle="modal" data-target="#carpool-info-modal"
@@ -72,7 +70,7 @@
                         
                     </div>
                     <div class="caption">
-                        <p><strong>@driver.name</strong>@driver.username</p>
+                        <p><strong>@driver.name</strong> @driver.username</p>
                         <p>@driver.comment</p>
                         <div class="table-container">
                             <table class="table table-condensed">
@@ -86,29 +84,25 @@
                         </div>
                         <div class="preferences">
                             @if(driver.noSmoking==false){}else{
-                               <span class="img-icon smoking" data-toggle="tooltip" data-placement="top" title="Smoking OK"></span>
+                               <span class="image: url('..//images/smoking.png');" data-toggle="tooltip" data-placement="top" title="Smoking OK"><img src="@routes.Assets.at("images/smoking.png")"/></span>
                             }
                             @if(driver.noEating==false){}else{
-                               <span class="img-icon eating" data-toggle="tooltip" data-placement="top" title="Eating OK"></span>
+                               <span class="eating" data-toggle="tooltip" data-placement="top" title="Eating OK"><img src="@routes.Assets.at("images/eating.png")"/></span>
                             }
                             @if(driver.noDrinking==false){}else{
-                               <span class="img-icon drinking" data-toggle="tooltip" data-placement="top" title="Drinking OK"></span>
+                               <span class="drinking" data-toggle="tooltip" data-placement="top" title="Drinking OK"><img src="@routes.Assets.at("images/drinking.png")"/></span>
                             }
                         </div>
                         <div class="meta">
                             @if(driver.sameGender==false){
-                                <span class="label label-success"><i class="glyphicon glyphicon-star"></i> {{rating}}</span>
+                                <span class="label label-success"><i class="glyphicon glyphicon-star"></i>Rating</span>
                             }
                             <span class="label label-default">@driver.origin</span>
                         </div>
                     </div>
                 </a>
             </div>
-        </div>
-      </li>
     }
-  </ul> 
-
 </div>
 
 }
