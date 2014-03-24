@@ -121,6 +121,9 @@ public class User {
   private boolean isDriver;
   private String origin;
   private String comment;
+  // images
+  private String userImage;
+  private String vehicleImage;
   // preferences
   private boolean noSmoking;
   private boolean noEating;
@@ -137,6 +140,9 @@ public class User {
     this.isDriver = isDriver;
     this.origin = origin;
     this.comment = comment;
+
+    this.userImage = "";
+    this.vehicleImage = "";
 
     this.noSmoking = true;
     this.noEating = true;
@@ -197,6 +203,26 @@ public class User {
   /** Setter for comment. */
   public String comment(String value) {
     return (this.comment = value);
+  }
+
+  /** Getter for userImage. */
+  public String userImage() {
+    return this.userImage;
+  }
+
+  /** Setter for userImage. */
+  public String userImage(String value) {
+    return (this.userImage = value);
+  }
+
+  /** Getter for vehicleImage. */
+  public String vehicleImage() {
+    return this.vehicleImage;
+  }
+
+  /** Setter for vehicleImage. */
+  public String vehicleImage(String value) {
+    return (this.vehicleImage = value);
   }
 
   /** Getter for noSmoking. */

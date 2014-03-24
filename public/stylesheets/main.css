@@ -93,6 +93,16 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+/* Tile Images */
+.application .interface .driver .images {
+  margin: -15px;
+  margin-bottom: 0;
+}
+.application .interface .driver .images img {
+  float: left;
+  width: 50%;
+}
+
 /* Tile Table */
 .application .interface .driver .table-container {
   margin-left: -16px;
