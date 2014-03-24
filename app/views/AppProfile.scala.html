@@ -27,23 +27,6 @@
 
     <hr />
 
-    <div class="row">
-      <div class="col-sm-6  col-md-4 col-lg-3">
-        <label>Yourself</label>
-        <a class="thumbnail" href="#">
-          <img src="@routes.Assets.at("images/default.png")">
-        </a>
-      </div>
-      <div class="col-sm-6  col-md-4 col-lg-3">
-        <label>Your car</label>
-        <a class="thumbnail" href="#">
-          <img src="@routes.Assets.at("images/default.png")">
-        </a>
-      </div>
-    </div>
-
-    <hr/>
-
     <h2>
       <label>
         <input type="checkbox" name="isDriver" @if(userForm("isDriver").value == "true") { checked }/> Driver
@@ -52,24 +35,39 @@
     </h2>
 
     <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <label>Image of Yourself</label>
+        <a class="thumbnail" href="#">
+          <img src="@routes.Assets.at("images/default.png")">
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <label>Image of Your Vehicle</label>
+        <a class="thumbnail" href="#">
+          <img src="@routes.Assets.at("images/default.png")">
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-sm-6 form-group">
         <label>Origin</label>  
-        <input class="form-control" type="text" placeholder="Where do you live?" />
+        <input class="form-control" type="text" name="origin" placeholder="Where do you live?" value="@userForm("origin").value" />
       </div>
 
       <div class="col-sm-6 form-group">
         <label>Preferences</label>
         <div class="checkbox">
-          <label><input type="checkbox" /> No Smoking</label>
+          <label><input type="checkbox" name="noSmoking" @if(userForm("noSmoking").value == "true") { checked }/> No Smoking</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" /> No Eating</label>
+          <label><input type="checkbox" name="noEating" @if(userForm("noEating").value == "true") { checked }/> No Eating</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" /> No Drinking</label>
+          <label><input type="checkbox" name="noDrinking" @if(userForm("noDrinking").value == "true") { checked }/> No Drinking</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" /> Same Gender</label>
+          <label><input type="checkbox" name="sameGender" @if(userForm("sameGender").value == "true") { checked }/> Same Gender</label>
         </div>
       </div>
     </div>
@@ -77,7 +75,7 @@
     <hr />
 
     <div>
-      <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-check"></i> Save Changes</button>
+      <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i> Save Changes</button>
     </div>
   }
 </div>

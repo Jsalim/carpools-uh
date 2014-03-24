@@ -92,7 +92,12 @@ public class User {
     User user = users.get(formData.username);
     user.name(formData.name);
     user.isDriver(formData.isDriver);
-    //...
+    user.origin(formData.origin);
+    
+    user.noSmoking(formData.noSmoking);
+    user.noEating(formData.noEating);
+    user.noDrinking(formData.noDrinking);
+    user.sameGender(formData.sameGender);
     return user;
   }
 
