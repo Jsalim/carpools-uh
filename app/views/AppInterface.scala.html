@@ -57,52 +57,47 @@
     </div>
   </div>
 
-        
-        
-  <div class="driver">
+  <div class="drivers row">
     @for(driver <- data.getUsers("drivers")) {
-            <div class="driver-content">
-                <a class="thumbnail carpool" href=""
-                            data-toggle="modal" data-target="#carpool-info-modal"
-                            data-name="{{name}}" data-phone="{{phone}}" data-location="{{location}}" data-comment="{{comment}}"
-                            data-monday="{{days.m}}" data-tuesday="{{days.t}}" data-wednesday="{{days.w}}" data-thursday="{{days.r}}" data-friday="{{days.f}}">
-                    <div class="image">
-                        
-                    </div>
-                    <div class="caption">
-                        <p><strong>@driver.name</strong> @driver.username</p>
-                        <p>@driver.comment</p>
-                        <div class="table-container">
-                            <table class="table table-condensed">
-                                <thead><tr>
-                                    <th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
-                                </tr></thead>
-                                <tbody><tr>
-                                    <td></td>
-                                </tr></tbody>
-                            </table>
-                        </div>
-                        <div class="preferences">
-                            @if(driver.noSmoking==false){}else{
-                               <span class="image: url('..//images/smoking.png');" data-toggle="tooltip" data-placement="top" title="Smoking OK"><img src="@routes.Assets.at("images/smoking.png")"/></span>
-                            }
-                            @if(driver.noEating==false){}else{
-                               <span class="eating" data-toggle="tooltip" data-placement="top" title="Eating OK"><img src="@routes.Assets.at("images/eating.png")"/></span>
-                            }
-                            @if(driver.noDrinking==false){}else{
-                               <span class="drinking" data-toggle="tooltip" data-placement="top" title="Drinking OK"><img src="@routes.Assets.at("images/drinking.png")"/></span>
-                            }
-                        </div>
-                        <div class="meta">
-                            @if(driver.sameGender==false){
-                                <span class="label label-success"><i class="glyphicon glyphicon-star"></i>Rating</span>
-                            }
-                            <span class="label label-default">@driver.origin</span>
-                        </div>
-                    </div>
-                </a>
+      <div class="driver col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>@driver.name() <small>@driver.username()</small></h4></div>
+          <div class="panel-body">
+            <div class="images">
+              <img src="" />
+              <img src="" />
             </div>
+            <p>@driver.comment()</p>
+            <div class="table-container">
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <ul class="preferences">
+              @if(driver.noSmoking()) {
+                <li class="no-smoking" data-toggle="tooltip" data-placement="top" title="No Smoking"></li>
+              }
+              @if(driver.noEating()) {
+                <li class="no-eating" data-toggle="tooltip" data-placement="top" title="No Eating"></li>
+              }
+              @if(driver.noDrinking()) {
+                <li class="no-drinking" data-toggle="tooltip" data-placement="top" title="No Drinking"></li>
+              }
+            </ul>
+            <ul class="meta">
+              <li class="location"><span class="label label-default">@driver.origin()</span></li>
+            </ul>
+            <div class="buttons">
+              <button class="btn btn-default btn-sm btn-block">Request Ride</button>
+            </div>
+          </div>
+        </div>
+      </div>
     }
+  </div>
 </div>
-
 }

@@ -2,29 +2,33 @@
  * General Styles
  */
 body {
+  background-color: #fdfdfd;
   font-family: 'Roboto';
 }
-
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Condensed';
   font-weight: bold;
+}
+
+.clear {
+  clear: both;
+}
+.btn {
+  outline: none!important;
 }
 
 
 /**
  * Home Page
  */
-
 .home .navbar {
   border-radius: 0;
   border-width: 0;
   margin-bottom: 0;
 }
-
 .home .navbar-header.pull-right .navbar-brand {
   font-size: 14px;
 }
-
 .home-header {
   background-image: url('../images/manoa.jpg');
   background-position: center;
@@ -34,7 +38,6 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   width: 100%
 }
-
 .home-header h1 {
   color: white;
   font-size: 64px;
@@ -43,36 +46,29 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
-
 .home-section {
   background-color: white;
   padding: 25px;
   text-align: center;
 }
-
 .home-section.alt {
   background-color: #e5e5e5;
 }
-
 .home-section h2 span {
   display: inline-block;
   white-space: nowrap;
   width: 40%;
 }
-
 .home-section h2 span:first-child {
   text-align: right;
 }
-
 .home-section h2 span:last-child {
   text-align: left;
 }
-
 .home-road {
   background-color: #333;
   padding: 20px; 
 }
-
 .home-road-line {
   border-top: 3px dashed #ff0;
 }
@@ -80,22 +76,74 @@ h1, h2, h3, h4, h5, h6 {
 /**
  * App Interface
  */
+/* Filters */
 .application .interface .filters .checkbox {
   display: inline-block;
   margin-right: 15px;
 }
 
-/* Tiles */
-.application .interface .driver {
-            display: inline-block;
-            margin-right: -12px;
-            vertical-align: top;
-            width: 33.3%;
-        }
-.application .interface .driver .driver-content {
-            padding: 1em;
-            padding-bottom: 0;
-        }
+/* Tile */
+.application .interface .driver .panel {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Tile Header */
+.application .interface .driver .panel-heading h4 {
+  margin: 0;
+}
+
+/* Tile Table */
+.application .interface .driver .table-container {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+.application .interface .driver .table th,
+.application .interface .driver .table td {
+  text-align: center;
+}
+
+/* Tile Preference/Meta */
+.application .interface .driver .preferences,
+.application .interface .driver .meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tile Preference */
+.application .interface .driver .preferences {
+  float: left;
+}
+.application .interface .driver .preferences li {
+  background-size: contain;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.application .interface .driver .preferences li.no-smoking {
+  background-image: url('../images/icon_no_smoking.png');
+}
+.application .interface .driver .preferences li.no-eating {
+  background-image: url('../images/icon_no_eating.png');
+}
+.application .interface .driver .preferences li.no-drinking {
+  background-image: url('../images/icon_no_drinking.png');
+}
+.application .interface .driver .preferences .tooltip {
+  white-space: nowrap;
+}
+
+/* Tile Meta */
+.application .interface .driver .meta {
+  float: right;
+}
+
+/* Tile Buttons */
+.application .interface .driver .buttons {
+  clear: both;
+  padding-top: 5px;
+}
 
 /**
  * App Profile
