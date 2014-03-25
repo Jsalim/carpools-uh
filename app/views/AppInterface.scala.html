@@ -80,9 +80,20 @@
               <table class="table table-condensed">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
                   </tr>
                 </thead>
+                <tbody>
+                  <tr>
+                    <th>A</th>
+                    <td>730a</td><td>-</td><td>730a</td><td>-</td><td>730a</td>
+                  </tr>
+                  <tr>
+                    <th>R</th>
+                    <td>100p</td><td>-</td><td>100p</td><td>-</td><td>330p</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             <ul class="preferences">
@@ -107,7 +118,7 @@
         </div>
       </div>
 
-      <div class="modal fade" id="info-modal-@driver.id()" tabindex="-1">
+      <div id="info-modal-@driver.id()" class="modal fade info-modal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -115,15 +126,62 @@
               <h4 class="modal-title">@driver.name() <small>@driver.username()</small></h4>
             </div>
             <div class="modal-body">
-
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="images">
+                    @if(driver.userImage().length() == 0) {
+                      <img src="@routes.Assets.at("images/default.png")" />
+                    } else {
+                      <img src="@driver.userImage()" />
+                    }
+                    @if(driver.userImage().length() == 0) {
+                      <img src="@routes.Assets.at("images/default.png")" />
+                    } else {
+                      <img src="@driver.vehicleImage()" />
+                    }
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <p>
+                    <strong>Location</strong> @driver.origin()
+                  </p>
+                  <p>
+                    <strong>Phone</strong> (808) 236-4445
+                  </p>
+                  <p>
+                    <strong>Comment</strong> @driver.comment()
+                  </p>
+                </div>
+              </div>
+              <hr/>
+              <h4>Days/Times Available</h4>
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Arrival</th>
+                    <td>730a</td><td>-</td><td>730a</td><td>-</td><td>730a</td>
+                  </tr>
+                  <tr>
+                    <th>Return</td>
+                    <td>100p</td><td>-</td><td>100p</td><td>-</td><td>330p</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Request Ride</button>
+              <button type="button" class="btn btn-primary"><i class="fa fa-comment"></i> Request Ride</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
+
     }
   </div>
 </div>

@@ -88,40 +88,21 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-/* Tile Header */
 .application .interface .driver .panel-heading h4 {
   margin: 0;
 }
 
-/* Tile Images */
-.application .interface .driver .images {
-  margin: -15px;
-  margin-bottom: 0;
-}
-.application .interface .driver .images img {
-  float: left;
-  width: 50%;
-}
-
-/* Tile Table */
 .application .interface .driver .table-container {
   margin-left: -16px;
   margin-right: -16px;
 }
-.application .interface .driver .table th,
-.application .interface .driver .table td {
-  text-align: center;
-}
 
-/* Tile Preference/Meta */
 .application .interface .driver .preferences,
 .application .interface .driver .meta {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
-/* Tile Preference */
 .application .interface .driver .preferences {
   float: left;
 }
@@ -144,15 +125,33 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
 }
 
-/* Tile Meta */
 .application .interface .driver .meta {
   float: right;
 }
 
-/* Tile Buttons */
 .application .interface .driver .buttons {
   clear: both;
   padding-top: 5px;
+}
+
+/* Tile/Modal */
+.application .interface .drivers .images {
+  margin: -15px;
+  margin-bottom: 0;
+}
+.application .interface .drivers .images img {
+  float: left;
+  width: 50%;
+}
+
+.application .interface .drivers .table th,
+.application .interface .drivers .table td {
+  text-align: center;
+}
+.application .interface .drivers .table th:first-child,
+.application .interface .drivers .table td:first-child {
+  text-align: right;
+  width: 1px;
 }
 
 /**
