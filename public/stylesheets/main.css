@@ -153,6 +153,12 @@ h1, h2, h3, h4, h5, h6 {
   text-align: right;
   width: 1px;
 }
+.application .interface .drivers .table .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 32px;
+  width: 0;
+}
 
 /**
  * App Profile

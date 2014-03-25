@@ -141,18 +141,19 @@
                 </div>
                 <div class="col-sm-6">
                   <p>
-                    <strong>Location</strong> @driver.origin()
+                    <strong>Location:</strong> @driver.origin()
                   </p>
                   <p>
-                    <strong>Phone</strong> (808) 236-4445
+                    <strong>Phone:</strong> (808) 236-4445
                   </p>
                   <p>
-                    <strong>Comment</strong> @driver.comment()
+                    <strong>Comment:</strong> @driver.comment()
                   </p>
                 </div>
               </div>
               <hr/>
-              <h4>Days/Times Available</h4>
+              <h4>Request a Ride</h4>
+              <label>Days/Times Available <small class="text-muted">Check the days to request</small></label>
               <table class="table table-condensed">
                 <thead>
                   <tr>
@@ -163,14 +164,26 @@
                 <tbody>
                   <tr>
                     <th>Arrival</th>
-                    <td>730a</td><td>-</td><td>730a</td><td>-</td><td>730a</td>
+                    <td><div class="checkbox"><label><input type="checkbox"> 730a</label></div></td>
+                    <td>-</td>
+                    <td><div class="checkbox"><label><input type="checkbox"> 730a</label></div></td>
+                    <td>-</td>
+                    <td><div class="checkbox"><label><input type="checkbox"> 730a</label></div></td>
                   </tr>
                   <tr>
                     <th>Return</td>
-                    <td>100p</td><td>-</td><td>100p</td><td>-</td><td>330p</td>
+                    <td><div class="checkbox"><label><input type="checkbox"> 100p</label></div></td>
+                    <td>-</td>
+                    <td><div class="checkbox"><label><input type="checkbox"> 100p</label></div></td>
+                    <td>-</td>
+                    <td><div class="checkbox"><label><input type="checkbox"> 330p</label></div></td>
                   </tr>
                 </tbody>
               </table>
+              <div class="form-group">
+                <label>Message <small class="text-muted">Sent with the request</small></label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary"><i class="fa fa-comment"></i> Request Ride</button>
