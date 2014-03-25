@@ -132,13 +132,13 @@ h1, h2, h3, h4, h5, h6 {
   height: 20px;
 }
 .application .interface .driver .preferences li.no-smoking {
-  background-image: url('../images/icon_no_smoking.png');
+  background-image: url('../images/icons/no_smoking.png');
 }
 .application .interface .driver .preferences li.no-eating {
-  background-image: url('../images/icon_no_eating.png');
+  background-image: url('../images/icons/no_eating.png');
 }
 .application .interface .driver .preferences li.no-drinking {
-  background-image: url('../images/icon_no_drinking.png');
+  background-image: url('../images/icons/no_drinking.png');
 }
 .application .interface .driver .preferences .tooltip {
   white-space: nowrap;
