@@ -92,9 +92,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-.application .interface .driver .table-container {
-  margin-left: -16px;
-  margin-right: -16px;
+.application .interface .driver .table th,
+.application .interface .driver .table td {
+  font-size: 12px;
 }
 
 .application .interface .driver .preferences,

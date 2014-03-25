@@ -59,7 +59,7 @@
 
   <div class="drivers row">
     @for(driver <- data.getUsers("drivers")) {
-      <div class="driver col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="driver col-xs-12 col-sm-6 col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading"><h4>@driver.name() <small>@driver.username()</small></h4></div>
           <div class="panel-body">
@@ -76,26 +76,24 @@
               }
             </div>
             <p>@driver.comment()</p>
-            <div class="table-container">
-              <table class="table table-condensed">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th>A</th>
-                    <td>730a</td><td>-</td><td>730a</td><td>-</td><td>730a</td>
-                  </tr>
-                  <tr>
-                    <th>R</th>
-                    <td>100p</td><td>-</td><td>100p</td><td>-</td><td>330p</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>M</th><th>T</th><th>W</th><th>R</th><th>F</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>A</th>
+                  <td>1030a</td><td>1030a</td><td>1030a</td><td>1030a</td><td>1030a</td>
+                </tr>
+                <tr>
+                  <th>R</th>
+                  <td>100p</td><td>-</td><td>100p</td><td>-</td><td>330p</td>
+                </tr>
+              </tbody>
+            </table>
             <ul class="preferences">
               @if(driver.noSmoking()) {
                 <li class="no-smoking" data-toggle="tooltip" data-placement="top" title="No Smoking"></li>
