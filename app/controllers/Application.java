@@ -128,4 +128,13 @@ public class Application extends Controller {
     return ok(AppHistory.render(data));
   }
 
+  /**
+   * Creates a new request.
+   */
+  @Security.Authenticated(Secured.class)
+  public static Result sendRequest() {
+    // Get data from request form
+    // Add a new request to the Database
+    return redirect(routes.Application.appInterface());
+  }
 }
