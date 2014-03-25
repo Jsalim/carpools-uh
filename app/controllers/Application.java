@@ -104,14 +104,14 @@ public class Application extends Controller {
    */
   @Security.Authenticated(Secured.class)
   public static Result saveProfile() {
-    Form<UserFormData> userForm = Form.form(UserFormData.class);
+    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
     if(userForm.hasErrors()) {
       Data data = new Data();
       data.set("pageTitle", "Carpools UH");
       data.set("user", User.get(session().get("username")));
       return badRequest(AppProfile.render(data, userForm));
     } else {
-      UserFormData userFormData = userForm.bindFromRequest().get();
+      UserFormData userFormData = userForm.get();
       User.save(userFormData); 
     }
     return redirect(routes.Application.appProfile());
@@ -134,7 +134,15 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result sendRequest() {
     // Get data from request form
-    // Add a new request to the Database
+    Form<RequestFormData> requestFrom = Form.form(RequestFormData.class).bindFromRequest();
+    if(requestFrom.hasErrors()) {
+
+    } else {
+      // Add a new request to the Database
+      RequestFormData requestFormData = requestFrom.get();
+      Request.add(requestFormData);
+      flash("success", "Request successfully sent to " + User.get(requestFormData.driverUsername).name());
+    }
     return redirect(routes.Application.appInterface());
   }
 }
