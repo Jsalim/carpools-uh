@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
 import models.formdata.RequestFormData;
@@ -24,6 +25,7 @@ public class Request {
                                       formData.arrivalM, formData.arrivalT, formData.arrivalW, formData.arrivalR, formData.arrivalF,
                                       formData.returnM,  formData.returnT,  formData.returnW,  formData.returnR,  formData.returnF,
                                       formData.message);
+    
     requests.put(id, request);
     return request;
   }
@@ -49,6 +51,7 @@ public class Request {
   private boolean returnF;
 
   private String message;
+  private long timestamp;
 
   public Request(long id, String requesterUsername, String driverUsername,
                  boolean arrivalM, boolean arrivalT, boolean arrivalW, boolean arrivalR, boolean arrivalF,
@@ -71,6 +74,7 @@ public class Request {
     this.returnF = returnF;
 
     this.message = message;
+    this.timestamp = (new Date()).getTime();
   }
 
   public long id() {
@@ -82,5 +86,9 @@ public class Request {
   }
   public String message(String value) {
     return (this.message = value);
+  }
+  
+  public long timestamp() {
+    return this.timestamp;
   }
 }
