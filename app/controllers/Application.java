@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
@@ -7,9 +9,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import models.*;
 import models.formdata.*;
+import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
 import play.data.Form;
 import play.mvc.Controller;
+import play.mvc.Http.MultipartFormData;
+import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.*;
@@ -144,5 +149,27 @@ public class Application extends Controller {
       flash("success", "Request successfully sent to " + User.get(requestFormData.driverUsername).name());
     }
     return redirect(routes.Application.appInterface());
+  }
+  
+  @Security.Authenticated(Secured.class)
+  public static Result upload() {
+    System.out.println("you got there at least");
+    MultipartFormData body = request().body().asMultipartFormData();
+    FilePart picture = body.getFile("picture");
+    if (picture != null) {
+      String fileName = picture.getFilename();
+      String contentType = picture.getContentType(); 
+      File file = picture.getFile();
+      try {
+        FileUtils.moveFile(file, new File("../public/images/", fileName));
+    } catch (IOException ioe) {
+        System.out.println("Problem operating on filesystem");
+    }
+      System.out.println(fileName + "You made it here");
+      return ok("File uploaded");
+    } else {
+      flash("error", "Missing file");
+      return redirect(routes.Application.appInterface());    
+    }
   }
 }

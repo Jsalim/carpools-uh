@@ -1,5 +1,5 @@
 @(data: controllers.Data, userForm: Form[models.formdata.UserFormData])
-
+@import helper._
 @App(data) {
 
 <div class="profile">
@@ -41,6 +41,7 @@
           <img src="@routes.Assets.at("images/default.png")">
         </a>
       </div>
+
       <div class="col-sm-6 col-md-4 col-lg-3">
         <label>Image of Your Vehicle</label>
         <a class="thumbnail" href="#">
@@ -48,6 +49,13 @@
         </a>
       </div>
     </div>
+    
+    @form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
+    
+    <input type="file" name="picture">
+    
+    
+}
 
     <div class="row">
       <div class="col-sm-6 form-group">
