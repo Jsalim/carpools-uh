@@ -98,11 +98,19 @@
               <tbody>
                 <tr>
                   <th>A</th>
-                  <td>1030a</td><td>1030a</td><td>1030a</td><td>1030a</td><td>1030a</td>
+                  <td>@if(driver.arrivalM()) { @driver.arrivalM() } else { - }</td>
+                  <td>@if(driver.arrivalT()) { @driver.arrivalT() } else { - }</td>
+                  <td>@if(driver.arrivalW()) { @driver.arrivalW() } else { - }</td>
+                  <td>@if(driver.arrivalR()) { @driver.arrivalR() } else { - }</td>
+                  <td>@if(driver.arrivalF()) { @driver.arrivalF() } else { - }</td>
                 </tr>
                 <tr>
                   <th>R</th>
-                  <td>100p</td><td>-</td><td>100p</td><td>-</td><td>330p</td>
+                  <td>@if(driver.returnM()) { @driver.returnM() } else { - }</td>
+                  <td>@if(driver.returnT()) { @driver.returnT() } else { - }</td>
+                  <td>@if(driver.returnW()) { @driver.returnW() } else { - }</td>
+                  <td>@if(driver.returnR()) { @driver.returnR() } else { - }</td>
+                  <td>@if(driver.returnF()) { @driver.returnF() } else { - }</td>
                 </tr>
               </tbody>
             </table>
@@ -175,19 +183,39 @@
                   <tbody>
                     <tr>
                       <th>Arrival</th>
-                      <td><div class="checkbox"><label><input type="checkbox" name="arrivalM"> 730a</label></div></td>
-                      <td>-</td>
-                      <td><div class="checkbox"><label><input type="checkbox" name="arrivals[W]"> 730a</label></div></td>
-                      <td>-</td>
-                      <td><div class="checkbox"><label><input type="checkbox" name="arrivals[F]"> 730a</label></div></td>
+                      @if(driver.arrivalM().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="arrivalM"> @driver.arrivalM()</label></div></td>
+                      }
+                      @if(driver.arrivalT().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="arrivalT"> @driver.arrivalT()</label></div></td>
+                      }
+                      @if(driver.arrivalW().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="arrivalW"> @driver.arrivalW()</label></div></td>
+                      }
+                      @if(driver.arrivalR().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="arrivalR"> @driver.arrivalR()</label></div></td>
+                      }
+                      @if(driver.arrivalF().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="arrivalF"> @driver.arrivalF()</label></div></td>
+                      }
                     </tr>
                     <tr>
                       <th>Return</td>
-                      <td><div class="checkbox"><label><input type="checkbox" name="returns[M]"> 100p</label></div></td>
-                      <td>-</td>
-                      <td><div class="checkbox"><label><input type="checkbox" name="returns[W]"> 100p</label></div></td>
-                      <td>-</td>
-                      <td><div class="checkbox"><label><input type="checkbox" name="returns[F]"> 330p</label></div></td>
+                      @if(driver.returnM().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="returnM"> @driver.returnM()</label></div></td>
+                      }
+                      @if(driver.returnT().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="returnT"> @driver.returnT()</label></div></td>
+                      }
+                      @if(driver.returnW().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="returnW"> @driver.returnW()</label></div></td>
+                      }
+                      @if(driver.returnR().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="returnR"> @driver.returnR()</label></div></td>
+                      }
+                      @if(driver.returnF().length > 0) {
+                        <td><div class="checkbox"><label><input type="checkbox" name="returnF"> @driver.returnF()</label></div></td>
+                      }
                     </tr>
                   </tbody>
                 </table>

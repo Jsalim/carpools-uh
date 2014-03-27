@@ -1,3 +1,4 @@
+import java.util.Random;
 import models.User;
 import play.Application;
 import play.GlobalSettings;
@@ -24,5 +25,40 @@ public class Global extends GlobalSettings{
     User.add("tchida",    "Terrance Chida",       true,   "Salt Lake",  "");
     User.add("jknaus",    "Jaki Knaus",           true,   "Waipahu",    "");
     User.add("jlee",      "Janis Lee",            false,  "Aiea",       "");
+
+    Random rand = new Random();
+    for(User user : User.getAll()) {
+      if(Math.random() < 0.5) {
+        user.arrivalM((rand.nextInt(5) + 6) + ":" + (rand.nextInt(4) * 10 + 10) + "a");
+      }
+      if(Math.random() < 0.5) {
+        user.arrivalT((rand.nextInt(5) + 6) + ":" + (rand.nextInt(4) * 10 + 10) + "a");
+      }
+      if(Math.random() < 0.5) {
+        user.arrivalW((rand.nextInt(5) + 6) + ":" + (rand.nextInt(4) * 10 + 10) + "a");
+      }
+      if(Math.random() < 0.5) {
+        user.arrivalR((rand.nextInt(5) + 6) + ":" + (rand.nextInt(4) * 10 + 10) + "a");
+      }
+      if(Math.random() < 0.5) {
+        user.arrivalF((rand.nextInt(5) + 6) + ":" + (rand.nextInt(4) * 10 + 10) + "a");
+      }
+
+      if(Math.random() < 0.5) {
+        user.returnM((rand.nextInt(3) + 2) + ":" + (rand.nextInt(4) * 10 + 10) + "p");
+      }
+      if(Math.random() < 0.5) {
+        user.returnT((rand.nextInt(3) + 2) + ":" + (rand.nextInt(4) * 10 + 10) + "p");
+      }
+      if(Math.random() < 0.5) {
+        user.returnW((rand.nextInt(3) + 2) + ":" + (rand.nextInt(4) * 10 + 10) + "p");
+      }
+      if(Math.random() < 0.5) {
+        user.returnR((rand.nextInt(3) + 2) + ":" + (rand.nextInt(4) * 10 + 10) + "p");
+      }
+      if(Math.random() < 0.5) {
+        user.returnF((rand.nextInt(3) + 2) + ":" + (rand.nextInt(4) * 10 + 10) + "p");
+      }
+    }
   }
 }
