@@ -9,7 +9,9 @@ public class UserFormData {
   public boolean isDriver;
   public String origin;
   public String comment;
-
+  public String hourType;
+  public String minuteType;
+  public String timeType;
   public String userImage;
   public String vehicleImage;
 
@@ -27,7 +29,11 @@ public class UserFormData {
     this.isDriver = false;
     this.origin = "";
     this.comment = "";
-
+    
+    this.hourType = "";
+    this.minuteType = "";
+    this.timeType = "";
+    
     this.userImage = "";
     this.vehicleImage = "";
 
@@ -47,6 +53,10 @@ public class UserFormData {
     this.origin = user.origin();
     this.comment = user.comment();
 
+    this.hourType = user.getHourType();
+    this.minuteType = user.getMinuteType();
+    this.timeType = user.getTimeType();
+    
     this.userImage = user.userImage();
     this.vehicleImage = user.vehicleImage();
 
@@ -54,5 +64,47 @@ public class UserFormData {
     this.noEating = user.noEating();
     this.noDrinking = user.noDrinking();
     this.sameGender = user.sameGender();
+  }
+
+  /**
+   * @return the timeType
+   */
+  public String getTimeType() {
+    return timeType;
+  }
+
+  /**
+   * @param timeType the timeType to set
+   */
+  public void setTimeType(String timeType) {
+    this.timeType = timeType;
+  }
+
+  /**
+   * @return the minuteType
+   */
+  public String getMinuteType() {
+    return minuteType;
+  }
+
+  /**
+   * @param minuteType the minuteType to set
+   */
+  public void setMinuteType(String minuteType) {
+    this.minuteType = minuteType;
+  }
+
+  /**
+   * @return the hourType
+   */
+  public String getHourType() {
+    return hourType;
+  }
+
+  /**
+   * @param hourType the hourType to set
+   */
+  public void setHourType(String hourType) {
+    this.hourType = hourType;
   }
 }

@@ -1,5 +1,7 @@
-@(data: controllers.Data, userForm: Form[models.formdata.UserFormData])
+@(data: controllers.Data, userForm: Form[models.formdata.UserFormData], hourTypeMap: Map[String, Boolean],minuteTypeMap: Map[String, Boolean],timeTypeMap: Map[String, Boolean])
 @import helper._
+@import bootstrap3._
+
 @App(data) {
 
 <div class="profile">
@@ -20,7 +22,101 @@
 
     <input type="hidden" name="username" value="@userForm("username").value" />
 
+
+  @text(userForm("origin"),
+        label = "Origin",
+        placeholder = "Honolulu",
+        help = "Your starting Location.")
+<tr>
+
+  <td>M @bootstrap3.select(userForm("hourType"),
+                     label = "Hours",
+                     optionMap = hourTypeMap,
+                     isMultiple = false,
+                     help = ""
+                     )
+      @bootstrap3.select(userForm("minuteType"),
+                     label = "Min",
+                     optionMap = minuteTypeMap,
+                     isMultiple = false,
+                     help = "")
+      @bootstrap3.select(userForm("timeType"),
+                     label = "AM/PM",
+                     optionMap = timeTypeMap,
+                     isMultiple = false,
+                     help = "")
+                     </td>           
+ <td>T @bootstrap3.select(userForm("hourType"),
+                     label = "Hours",
+                     optionMap = hourTypeMap,
+                     isMultiple = false,
+                     help = ""
+                     )
+      @bootstrap3.select(userForm("minuteType"),
+                     label = "Min",
+                     optionMap = minuteTypeMap,
+                     isMultiple = false,
+                     help = "")
+      @bootstrap3.select(userForm("timeType"),
+                     label = "AM/PM",
+                     optionMap = timeTypeMap,
+                     isMultiple = false,
+                     help = "")
+                     </td>
+ <td>W @bootstrap3.select(userForm("hourType"),
+                     label = "Hours",
+                     optionMap = hourTypeMap,
+                     isMultiple = false,
+                     help = ""
+                     )
+      @bootstrap3.select(userForm("minuteType"),
+                     label = "Min",
+                     optionMap = minuteTypeMap,
+                     isMultiple = false,
+                     help = "")
+      @bootstrap3.select(userForm("timeType"),
+                     label = "AM/PM",
+                     optionMap = timeTypeMap,
+                     isMultiple = false,
+                     help = "")
+                     </td>
+ <td>R @bootstrap3.select(userForm("hourType"),
+                     label = "Hours",
+                     optionMap = hourTypeMap,
+                     isMultiple = false,
+                     help = ""
+                     )
+      @bootstrap3.select(userForm("minuteType"),
+                     label = "Min",
+                     optionMap = minuteTypeMap,
+                     isMultiple = false,
+                     help = "")
+      @bootstrap3.select(userForm("timeType"),
+                     label = "AM/PM",
+                     optionMap = timeTypeMap,
+                     isMultiple = false,
+                     help = "")
+                     </td>
+ <td>F @bootstrap3.select(userForm("hourType"),
+                     label = "Hours",
+                     optionMap = hourTypeMap,
+                     isMultiple = false,
+                     help = ""
+                     )
+      @bootstrap3.select(userForm("minuteType"),
+                     label = "Min",
+                     optionMap = minuteTypeMap,
+                     isMultiple = false,
+                     help = "")
+      @bootstrap3.select(userForm("timeType"),
+                     label = "AM/PM",
+                     optionMap = timeTypeMap,
+                     isMultiple = false,
+                     help = "")
+                     </td>
+                     </tr>
     <div class="form-group">
+    
       <label>Name</label>
       <input class="form-control" type="text" name="name" placeholder="Preferred Name" value="@userForm("name").value" />
     </div>

@@ -98,10 +98,16 @@ public class Application extends Controller {
   public static Result appProfile() {
     User user = User.get(session().get("username"));
     Data data = new Data();
+    Map<String, Boolean> hourTypeMap = HourTypes.getTypes();
+    Map<String, Boolean> minuteTypeMap = MinuteTypes.getTypes();
+    Map<String, Boolean> timeTypeMap = AmPm.getTypes();
     data.set("pageTitle", "Carpools UH");
     data.set("user", user);
+    data.set("timeTypeMap", timeTypeMap);
+    data.set("minuteTypeMap", minuteTypeMap);
+    data.set("hourTypeMap", hourTypeMap);
     Form<UserFormData> userForm = Form.form(UserFormData.class).fill(new UserFormData(user));
-    return ok(AppProfile.render(data, userForm));
+    return ok(AppProfile.render(data, userForm, hourTypeMap, minuteTypeMap, timeTypeMap));
   }
 
   /**
@@ -114,7 +120,10 @@ public class Application extends Controller {
       Data data = new Data();
       data.set("pageTitle", "Carpools UH");
       data.set("user", User.get(session().get("username")));
-      return badRequest(AppProfile.render(data, userForm));
+      Map<String, Boolean> hourTypeMap = HourTypes.getTypes();
+      Map<String, Boolean> minuteTypeMap = MinuteTypes.getTypes();
+      Map<String, Boolean> timeTypeMap = AmPm.getTypes();
+      return badRequest(AppProfile.render(data, userForm, hourTypeMap, minuteTypeMap, timeTypeMap));
     } else {
       UserFormData userFormData = userForm.get();
       User.save(userFormData); 

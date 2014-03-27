@@ -126,6 +126,10 @@ public class User {
   private boolean isDriver;
   private String origin;
   private String comment;
+  //time test
+  private String hourType;
+  private String minuteType;
+  private String timeType;
   // images
   private String userImage;
   private String vehicleImage;
@@ -269,4 +273,48 @@ public class User {
   public boolean sameGender(boolean value) {
     return (this.sameGender = value);
   }
+
+  /**
+   * @return the hourType
+   */
+  public String getHourType() {
+    return hourType;
+  }
+
+  /**
+   * @param hourType the hourType to set
+   */
+  public void setHourType(String hourType) {
+    this.hourType = hourType;
+  }
+
+  /**
+   * @return the minuteType
+   */
+  public String getMinuteType() {
+    return minuteType;
+  }
+
+  /**
+   * @param minuteType the minuteType to set
+   */
+  public void setMinuteType(String minuteType) {
+    this.minuteType = minuteType;
+  }
+
+  /**
+   * @return the timeType
+   */
+  public String getTimeType() {
+    return timeType;
+  }
+
+  /**
+   * @param timeType the timeType to set
+   */
+  public void setTimeType(String timeType) {
+    this.timeType = timeType;
+  }
+
+
 }
