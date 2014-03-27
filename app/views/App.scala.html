@@ -14,12 +14,12 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/app/profile">Profile</a></li>
-        <li><a href="/app/history">History</a></li>
+        <li><a href="@routes.Application.appProfile()">Profile</a></li>
+        <li><a href="@routes.Application.appHistory()">History</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a>@data.getUser("user").username()&#64;hawaii.edu</a></li>
-        <li><a href="/logout">Logout</a></li>
+        <li><a href="@routes.Application.logout()">Logout</a></li>
       </ul>
     </div>
   </div>
