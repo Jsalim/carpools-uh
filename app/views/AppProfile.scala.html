@@ -72,6 +72,38 @@
       </div>
     </div>
 
+    <h4>Times Available</h4>
+    <table id="times-available" class="table table-condensed">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Mon<span class="hidden-xs">day</span></th>
+          <th>Tue<span class="hidden-xs">sday</span></th>
+          <th>Wed<span class="hidden-xs">nesday</span></th>
+          <th>Thu<span class="hidden-xs">rsday</span></th>
+          <th>Fri<span class="hidden-xs">day</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Arrival</th>
+          <td><input class="form-control" type="text" name="arrivalM" value="@userForm("arrivalM").value" /></td>
+          <td><input class="form-control" type="text" name="arrivalT" value="@userForm("arrivalT").value" /></td>
+          <td><input class="form-control" type="text" name="arrivalW" value="@userForm("arrivalW").value" /></td>
+          <td><input class="form-control" type="text" name="arrivalR" value="@userForm("arrivalR").value" /></td>
+          <td><input class="form-control" type="text" name="arrivalF" value="@userForm("arrivalF").value" /></td>
+        </tr>
+        <tr>
+          <th>Return</th>
+          <td><input class="form-control" type="text" name="returnM" value="@userForm("returnM").value" /></td>
+          <td><input class="form-control" type="text" name="returnT" value="@userForm("returnT").value" /></td>
+          <td><input class="form-control" type="text" name="returnW" value="@userForm("returnW").value" /></td>
+          <td><input class="form-control" type="text" name="returnR" value="@userForm("returnR").value" /></td>
+          <td><input class="form-control" type="text" name="returnF" value="@userForm("returnF").value" /></td>
+        </tr>
+      </tbody>
+    </table>
+
     <hr />
 
     <div>

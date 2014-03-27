@@ -166,3 +166,10 @@ h1, h2, h3, h4, h5, h6 {
 .application .profile img {
   width: 100%;
 }
+table#times-available th,
+table#times-available td input[type="text"] {
+  text-align: center;
+}
+table#times-available th {
+  vertical-align: middle;
+}

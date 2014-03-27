@@ -18,6 +18,17 @@ public class UserFormData {
   public boolean noDrinking;
   public boolean sameGender;
 
+  public String arrivalM;
+  public String arrivalT;
+  public String arrivalW;
+  public String arrivalR;
+  public String arrivalF;
+  public String returnM;
+  public String returnT;
+  public String returnW;
+  public String returnR;
+  public String returnF;
+
   /**
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
    */
@@ -35,6 +46,9 @@ public class UserFormData {
     this.noEating = false;
     this.noDrinking = false;
     this.sameGender = false;
+
+    this.arrivalM = this.arrivalT = this.arrivalW = this.arrivalR = this.arrivalF = "";
+    this.returnM = this.returnT = this.returnW = this.returnR = this.returnF = "";
   }
 
   /**
@@ -54,5 +68,16 @@ public class UserFormData {
     this.noEating = user.noEating();
     this.noDrinking = user.noDrinking();
     this.sameGender = user.sameGender();
+
+    this.arrivalM = user.arrivalM();
+    this.arrivalT = user.arrivalT();
+    this.arrivalW = user.arrivalW();
+    this.arrivalR = user.arrivalR();
+    this.arrivalF = user.arrivalF();
+    this.returnM = user.returnM();
+    this.returnT = user.returnT();
+    this.returnW = user.returnW();
+    this.returnR = user.returnR();
+    this.returnF = user.returnF();
   }
 }

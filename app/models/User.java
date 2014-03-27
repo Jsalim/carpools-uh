@@ -98,6 +98,18 @@ public class User {
     user.noEating(formData.noEating);
     user.noDrinking(formData.noDrinking);
     user.sameGender(formData.sameGender);
+
+    user.arrivalM(formData.arrivalM);
+    user.arrivalT(formData.arrivalT);
+    user.arrivalW(formData.arrivalW);
+    user.arrivalR(formData.arrivalR);
+    user.arrivalF(formData.arrivalF);
+
+    user.returnM(formData.returnM);
+    user.returnT(formData.returnT);
+    user.returnW(formData.returnW);
+    user.returnR(formData.returnR);
+    user.returnF(formData.returnF);
     return user;
   }
 
@@ -134,6 +146,17 @@ public class User {
   private boolean noEating;
   private boolean noDrinking;
   private boolean sameGender;
+  // times
+  private String arrivalM;
+  private String arrivalT;
+  private String arrivalW;
+  private String arrivalR;
+  private String arrivalF;
+  private String returnM;
+  private String returnT;
+  private String returnW;
+  private String returnR;
+  private String returnF;
 
   /**
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
@@ -153,120 +176,116 @@ public class User {
     this.noEating = true;
     this.noDrinking = true;
     this.sameGender = false;
+
+    this.arrivalM = this.arrivalT = this.arrivalW = this.arrivalR = this.arrivalF = "";
+    this.returnM = this.returnT = this.returnW = this.returnR = this.returnF = "";
   }
 
   /** Getter for id. */
-  public long id() {
-    return this.id;
-  }
+  public long id() { return this.id; }
 
   /** Getter for username. */
-  public String username() {
-    return this.username;
-  }
-
+  public String username() { return this.username; }
   /** Setter for username. */
-  public String username(String value) {
-    return (this.username = value);
-  }
+  public String username(String value) { return (this.username = value); }
 
   /** Getter for name. */
-  public String name() {
-    return this.name;
-  }
-
+  public String name() { return this.name; }
   /** Setter for name. */
-  public String name(String value) {
-    return (this.name = value);
-  }
+  public String name(String value) { return (this.name = value); }
 
   /** Getter for isDriver. */
-  public boolean isDriver() {
-    return this.isDriver;
-  }
-
+  public boolean isDriver() { return this.isDriver; }
   /** Setter for isDriver. */
-  public boolean isDriver(boolean value) {
-    return (this.isDriver = value);
-  }
+  public boolean isDriver(boolean value) { return (this.isDriver = value); }
 
   /** Getter for origin. */
-  public String origin() {
-    return this.origin;
-  }
-
+  public String origin() { return this.origin; }
   /** Setter for origin. */
-  public String origin(String value) {
-    return (this.origin = value);
-  }
+  public String origin(String value) { return (this.origin = value); }
 
   /** Getter for comment. */
-  public String comment() {
-    return this.comment;
-  }
-
+  public String comment() { return this.comment; }
   /** Setter for comment. */
-  public String comment(String value) {
-    return (this.comment = value);
-  }
+  public String comment(String value) { return (this.comment = value); }
 
   /** Getter for userImage. */
-  public String userImage() {
-    return this.userImage;
-  }
-
+  public String userImage() { return this.userImage; }
   /** Setter for userImage. */
-  public String userImage(String value) {
-    return (this.userImage = value);
-  }
+  public String userImage(String value) { return (this.userImage = value); }
 
   /** Getter for vehicleImage. */
-  public String vehicleImage() {
-    return this.vehicleImage;
-  }
-
+  public String vehicleImage() { return this.vehicleImage; }
   /** Setter for vehicleImage. */
-  public String vehicleImage(String value) {
-    return (this.vehicleImage = value);
-  }
+  public String vehicleImage(String value) { return (this.vehicleImage = value); }
 
   /** Getter for noSmoking. */
-  public boolean noSmoking() {
-    return this.noSmoking;
-  }
-
+  public boolean noSmoking() { return this.noSmoking; }
   /** Setter for noSmoking. */
-  public boolean noSmoking(boolean value) {
-    return (this.noSmoking = value);
-  }
+  public boolean noSmoking(boolean value) { return (this.noSmoking = value); }
 
   /** Getter for noEating. */
-  public boolean noEating() {
-    return this.noEating;
-  }
-
+  public boolean noEating() { return this.noEating; }
   /** Setter for noEating. */
-  public boolean noEating(boolean value) {
-    return (this.noEating = value);
-  }
+  public boolean noEating(boolean value) { return (this.noEating = value); }
 
   /** Getter for noDrinking. */
-  public boolean noDrinking() {
-    return this.noDrinking;
-  }
-
+  public boolean noDrinking() { return this.noDrinking; }
   /** Setter for noDrinking. */
-  public boolean noDrinking(boolean value) {
-    return (this.noDrinking = value);
-  }
+  public boolean noDrinking(boolean value) { return (this.noDrinking = value); }
 
   /** Getter for sameGender. */
-  public boolean sameGender() {
-    return this.sameGender;
-  }
-
+  public boolean sameGender() { return this.sameGender; }
   /** Setter for sameGender. */
-  public boolean sameGender(boolean value) {
-    return (this.sameGender = value);
-  }
+  public boolean sameGender(boolean value) { return (this.sameGender = value); }
+
+  /** Getter for arrivalM. */
+  public String arrivalM() { return this.arrivalM; }
+  /** Setter for arrivalM. */
+  public String arrivalM(String value) { return (this.arrivalM = value); }
+  
+  /** Getter for arrivalT. */
+  public String arrivalT() { return this.arrivalT; }
+  /** Setter for arrivalT. */
+  public String arrivalT(String value) { return (this.arrivalT = value); }
+  
+  /** Getter for arrivalW. */
+  public String arrivalW() { return this.arrivalW; }
+  /** Setter for arrivalW. */
+  public String arrivalW(String value) { return (this.arrivalW = value); }
+  
+  /** Getter for arrivalR. */
+  public String arrivalR() { return this.arrivalR; }
+  /** Setter for arrivalR. */
+  public String arrivalR(String value) { return (this.arrivalR = value); }
+  
+  /** Getter for arrivalF. */
+  public String arrivalF() { return this.arrivalF; }
+  /** Setter for arrivalF. */
+  public String arrivalF(String value) { return (this.arrivalF = value); }
+
+  /** Getter for returnM. */
+  public String returnM() { return this.returnM; }
+  /** Setter for returnM. */
+  public String returnM(String value) { return (this.returnM = value); }
+  
+  /** Getter for returnT. */
+  public String returnT() { return this.returnT; }
+  /** Setter for returnT. */
+  public String returnT(String value) { return (this.returnT = value); }
+  
+  /** Getter for returnW. */
+  public String returnW() { return this.returnW; }
+  /** Setter for returnW. */
+  public String returnW(String value) { return (this.returnW = value); }
+  
+  /** Getter for returnR. */
+  public String returnR() { return this.returnR; }
+  /** Setter for returnR. */
+  public String returnR(String value) { return (this.returnR = value); }
+  
+  /** Getter for returnF. */
+  public String returnF() { return this.returnF; }
+  /** Setter for returnF. */
+  public String returnF(String value) { return (this.returnF = value); }
 }
