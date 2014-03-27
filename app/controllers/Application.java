@@ -118,14 +118,14 @@ public class Application extends Controller {
   }
 
   /**
-   * This is the profile page.
+   * This is the requests page.
    */
   @Security.Authenticated(Secured.class)
-  public static Result appHistory() {
+  public static Result appRequests() {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
     data.set("user", User.get(session().get("username")));
-    return ok(AppHistory.render(data));
+    return ok(AppRequests.render(data));
   }
 
   /**
