@@ -3,16 +3,16 @@
 @App(data) {
 
 <div class="profile">
-@if(data.get("showAlerts") == true) {
-  <div class="alert alert-warning alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <p>
-      <strong>Getting Started</strong>
-    </p>
-    <p>
-      In this page, you can edit your general information. You can also publish your carpool which enables other users to find and request a ride from you.
-    </p>
-  </div>
+  @if(!data.getUser("user").hideAlerts()) {
+    <div class="alert alert-warning alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <p>
+        <strong>Getting Started</strong>
+      </p>
+      <p>
+        In this page, you can edit your general information. You can also publish your carpool which enables other users to find and request a ride from you.
+      </p>
+    </div>
   }
 
   <h1>Profile</h1>
@@ -104,6 +104,13 @@
         </tr>
       </tbody>
     </table>
+
+    <hr />
+
+    <h3>Options</h3>
+    <div class="checkbox">
+      <label><input type="checkbox" name="hideAlerts" @if(userForm("hideAlerts").value == "true") { checked }/> Hide Help Text</label>
+    </div>
 
     <hr />
 

@@ -17,7 +17,7 @@ public class UserFormData {
   public boolean noEating;
   public boolean noDrinking;
   public boolean sameGender;
-  public boolean showAlerts;
+  public boolean hideAlerts;
 
   public String arrivalM;
   public String arrivalT;
@@ -47,7 +47,7 @@ public class UserFormData {
     this.noEating = false;
     this.noDrinking = false;
     this.sameGender = false;
-    this.showAlerts = true;
+    this.hideAlerts = false;
 
     this.arrivalM = this.arrivalT = this.arrivalW = this.arrivalR = this.arrivalF = "";
     this.returnM = this.returnT = this.returnW = this.returnR = this.returnF = "";
@@ -70,7 +70,7 @@ public class UserFormData {
     this.noEating = user.noEating();
     this.noDrinking = user.noDrinking();
     this.sameGender = user.sameGender();
-    this.showAlerts = user.showAlerts();
+    this.hideAlerts = user.hideAlerts();
 
     this.arrivalM = user.arrivalM();
     this.arrivalT = user.arrivalT();
