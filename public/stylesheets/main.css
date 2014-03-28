@@ -166,6 +166,11 @@ h1, h2, h3, h4, h5, h6 {
 .application .profile img {
   width: 100%;
 }
+.application .profile .hidden-file-input {
+  overflow: hidden;
+  width: 0;
+  height: 0;
+}
 table#times-available th,
 table#times-available td input[type="text"] {
   text-align: center;
