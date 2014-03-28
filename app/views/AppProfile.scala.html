@@ -38,8 +38,15 @@
       <div class="col-sm-6 col-md-4 col-lg-3">
         <label>Image of Yourself</label>
         <a class="thumbnail" href="#">
-          <img src="@routes.Assets.at("images/default.png")">
+          @if(userForm("userImage").value.length == 0) {
+            <img src="@routes.Assets.at("images/default.png")" />
+          } else {
+            <img src="@userForm("userImage").value" />
+          }
         </a>
+        <div class="form-group">
+          <input type="file" name="userImage" accept="image/*">
+        </div>
       </div>
 
       <div class="col-sm-6 col-md-4 col-lg-3">
@@ -49,10 +56,6 @@
         </a>
       </div>
     </div>
-    
-    <hr/>
-    <input type="file" name="userImage" accept="image/*">
-    <hr/>
 
     <div class="row">
       <div class="col-sm-6 form-group">
