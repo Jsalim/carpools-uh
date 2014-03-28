@@ -27,7 +27,7 @@ public class Data {
   public Object get(String key) {
     return data.get(key);
   }
-
+  
   /**
    * Retrieves the value as a <code>User</code>.
    */

@@ -67,6 +67,12 @@ public class Application extends Controller {
    * Clears the session and redirects to the home page.
    */
   public static Result logout() throws Exception {
+    User user = User.get(session().get("username"));
+    
+    user.get(user.username()).setShowAlerts(false);
+    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
+    userForm.get().showAlerts=false;
+    System.out.println(userForm.get().showAlerts);
     session().clear();
     String serviceURL = routes.Application.home().absoluteURL(request());
     serviceURL = URLEncoder.encode(serviceURL, "UTF-8");
@@ -79,10 +85,19 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result appInterface() {
     Data data = new Data();
+    User user = User.get(session().get("username"));
     data.set("pageTitle", "Carpools UH");
     data.set("user", User.get(session().get("username")));
     data.set("drivers", User.getAllDrivers());
     data.set("locations", User.getLocations());
+    /**
+    if (User.get("username").showAlerts()==false) {
+      data.set("showAlerts", false);
+    }
+    else {
+      data.set("showAlerts", true);
+    }
+    */
     return ok(AppInterface.render(data));
   }
 
@@ -92,10 +107,22 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result appProfile() {
     User user = User.get(session().get("username"));
+    System.out.println(user.username());
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
     data.set("user", user);
-    Form<UserFormData> userForm = Form.form(UserFormData.class).fill(new UserFormData(user));
+   
+    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
+    System.out.println(userForm.get().showAlerts);
+    data.set("showAlerts",user.showAlerts);
+    /**
+    if (user.showAlerts()==false) {
+      data.set("showAlerts", false);
+    }
+    else {
+      data.set("showAlerts", true);
+    }
+    */
     return ok(AppProfile.render(data, userForm));
   }
 

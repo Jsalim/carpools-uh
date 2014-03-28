@@ -146,6 +146,7 @@ public class User {
   private boolean noEating;
   private boolean noDrinking;
   private boolean sameGender;
+  public boolean showAlerts;
   // times
   private String arrivalM;
   private String arrivalT;
@@ -171,10 +172,11 @@ public class User {
 
     this.userImage = "";
     this.vehicleImage = "";
-
+    
     this.noSmoking = true;
     this.noEating = true;
     this.noDrinking = true;
+    this.showAlerts = true;
     this.sameGender = false;
 
     this.arrivalM = this.arrivalT = this.arrivalW = this.arrivalR = this.arrivalF = "";
@@ -288,4 +290,16 @@ public class User {
   public String returnF() { return this.returnF; }
   /** Setter for returnF. */
   public String returnF(String value) { return (this.returnF = value); }
+
+  /**
+   * @return the showAlerts
+   */
+  public boolean showAlerts() {
+    return showAlerts;
+  }
+
+  /**
+   * @param showAlerts the showAlerts to set
+   */
+  public boolean setShowAlerts(boolean value) { return (this.showAlerts = value); }
 }
