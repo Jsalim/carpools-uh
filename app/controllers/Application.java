@@ -138,28 +138,6 @@ public class Application extends Controller {
     }
     return redirect(routes.Application.appProfile());
   }
-  
-  @Security.Authenticated(Secured.class)
-  public static Result upload() {
-    System.out.println("you got there at least");
-    MultipartFormData body = request().body().asMultipartFormData();
-    FilePart picture = body.getFile("picture");
-    if (picture != null) {
-      String fileName = picture.getFilename();
-      String contentType = picture.getContentType(); 
-      File file = picture.getFile();
-      try {
-        FileUtils.moveFile(file, new File("../public/images/", fileName));
-    } catch (IOException ioe) {
-        System.out.println("Problem operating on filesystem");
-    }
-      System.out.println(fileName + "You made it here");
-      return ok("File uploaded");
-    } else {
-      flash("error", "Missing file");
-      return redirect(routes.Application.appInterface());    
-    }
-  }
 
   /**
    * This is the requests page.
