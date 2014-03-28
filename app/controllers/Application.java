@@ -117,8 +117,6 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result saveProfile() throws IOException {
     Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
-    String imageUrl = Application.uploadImage(request().body().asMultipartFormData(), "userImage");
-    System.out.println(imageUrl);
     
     if(userForm.hasErrors()) {
       Data data = new Data();
@@ -127,6 +125,15 @@ public class Application extends Controller {
       return badRequest(AppProfile.render(data, userForm));
     } else {
       UserFormData userFormData = userForm.get();
+      String userImage = Application.uploadImage(request().body().asMultipartFormData(), "userImage");
+      String vehicleImage = Application.uploadImage(request().body().asMultipartFormData(), "vehicleImage");
+
+      if(userImage != null) {
+        userFormData.userImage = userImage;
+      }
+      if(vehicleImage != null) {
+        userFormData.vehicleImage = vehicleImage;
+      }
       User.save(userFormData); 
     }
     return redirect(routes.Application.appProfile());
@@ -196,11 +203,11 @@ public class Application extends Controller {
       String contentType = userImageFilePart.getContentType();
       if(contentType.indexOf("image") != -1) {
         String ext = contentType.split("/")[1];
-        File uploadsDirectory = new File(Play.application().path(), UPLOADS_DIRECTORY);
+        File uploadsDirectory = new File(Play.application().path().getAbsolutePath() + "/public/" + UPLOADS_DIRECTORY);
         if(uploadsDirectory.exists() || uploadsDirectory.mkdir()) {
           File file = new File(uploadsDirectory, new Date().getTime() + "." + ext);
           Files.copy(userImageFilePart.getFile().toPath(), file.toPath());
-          return file.getCanonicalPath();
+          return UPLOADS_DIRECTORY + "/" + file.getName();
         }
       }
     }

@@ -41,7 +41,7 @@
           @if(userForm("userImage").value.length == 0) {
             <img src="@routes.Assets.at("images/default.png")" />
           } else {
-            <img src="@userForm("userImage").value" />
+            <img src="@routes.Assets.at(userForm("userImage").value)" />
           }
         </a>
         <input class="hidden-file-input" id="userImage" type="file" name="userImage" accept="image/*">
@@ -53,7 +53,7 @@
           @if(userForm("vehicleImage").value.length == 0) {
             <img src="@routes.Assets.at("images/default.png")" />
           } else {
-            <img src="@userForm("vehicleImage").value" />
+            <img src="@routes.Assets.at(userForm("vehicleImage").value)" />
           }
         </a>
         <input class="hidden-file-input" id="vehicleImage" type="file" name="vehicleImage" accept="image/*">

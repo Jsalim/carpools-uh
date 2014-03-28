@@ -93,6 +93,9 @@ public class User {
     user.name(formData.name);
     user.isDriver(formData.isDriver);
     user.origin(formData.origin);
+
+    user.userImage(formData.userImage);
+    user.vehicleImage(formData.vehicleImage);
     
     user.noSmoking(formData.noSmoking);
     user.noEating(formData.noEating);
