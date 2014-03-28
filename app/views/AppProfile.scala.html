@@ -16,7 +16,7 @@
 
   <h1>Profile</h1>
 
-  @helper.form(routes.Application.saveProfile) {
+  @helper.form(routes.Application.saveProfile(), 'enctype -> "multipart/form-data") {
 
     <input type="hidden" name="username" value="@userForm("username").value" />
 
@@ -50,10 +50,9 @@
       </div>
     </div>
     
-    <form action="routes.Application.upload">
-      <input type="file" name="picture" accept="image/*">
-      <input type="submit">
-    </form> 
+    <hr/>
+    <input type="file" name="userImage" accept="image/*">
+    <hr/>
 
     <div class="row">
       <div class="col-sm-6 form-group">

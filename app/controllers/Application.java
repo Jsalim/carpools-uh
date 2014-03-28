@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.util.Date;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,10 +13,12 @@ import models.*;
 import models.formdata.*;
 import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
+import play.Play;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
+import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.*;
@@ -24,6 +28,8 @@ public class Application extends Controller {
   private static final String CAS_LOGIN = "https://cas-test.its.hawaii.edu/cas/login";
   private static final String CAS_VALIDATE = "https://cas-test.its.hawaii.edu/cas/serviceValidate";
   private static final String CAS_LOGOUT = "https://cas-test.its.hawaii.edu/cas/logout";
+  
+  private static final String UPLOADS_DIRECTORY = "uploads";
 
   /**
    * This is the home page.
@@ -106,10 +112,14 @@ public class Application extends Controller {
 
   /**
    * Save the profile information.
+   * @throws IOException 
    */
   @Security.Authenticated(Secured.class)
-  public static Result saveProfile() {
+  public static Result saveProfile() throws IOException {
     Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
+    String imageUrl = Application.uploadImage(request().body().asMultipartFormData(), "userImage");
+    System.out.println(imageUrl);
+    
     if(userForm.hasErrors()) {
       Data data = new Data();
       data.set("pageTitle", "Carpools UH");
@@ -120,6 +130,28 @@ public class Application extends Controller {
       User.save(userFormData); 
     }
     return redirect(routes.Application.appProfile());
+  }
+  
+  @Security.Authenticated(Secured.class)
+  public static Result upload() {
+    System.out.println("you got there at least");
+    MultipartFormData body = request().body().asMultipartFormData();
+    FilePart picture = body.getFile("picture");
+    if (picture != null) {
+      String fileName = picture.getFilename();
+      String contentType = picture.getContentType(); 
+      File file = picture.getFile();
+      try {
+        FileUtils.moveFile(file, new File("../public/images/", fileName));
+    } catch (IOException ioe) {
+        System.out.println("Problem operating on filesystem");
+    }
+      System.out.println(fileName + "You made it here");
+      return ok("File uploaded");
+    } else {
+      flash("error", "Missing file");
+      return redirect(routes.Application.appInterface());    
+    }
   }
 
   /**
@@ -151,25 +183,27 @@ public class Application extends Controller {
     return redirect(routes.Application.appInterface());
   }
   
-  @Security.Authenticated(Secured.class)
-  public static Result upload() {
-    System.out.println("you got there at least");
-    MultipartFormData body = request().body().asMultipartFormData();
-    FilePart picture = body.getFile("picture");
-    if (picture != null) {
-      String fileName = picture.getFilename();
-      String contentType = picture.getContentType(); 
-      File file = picture.getFile();
-      try {
-        FileUtils.moveFile(file, new File("../public/images/", fileName));
-    } catch (IOException ioe) {
-        System.out.println("Problem operating on filesystem");
+  /**
+   * Uploads a file.
+   * @param multipartFormData
+   * @param name
+   * @return Returns the location of the file.
+   * @throws IOException If fails to save file.
+   */
+  private static String uploadImage(MultipartFormData multipartFormData, String name) throws IOException {
+    FilePart userImageFilePart = multipartFormData.getFile(name);
+    if(userImageFilePart != null) {
+      String contentType = userImageFilePart.getContentType();
+      if(contentType.indexOf("image") != -1) {
+        String ext = contentType.split("/")[1];
+        File uploadsDirectory = new File(Play.application().path(), UPLOADS_DIRECTORY);
+        if(uploadsDirectory.exists() || uploadsDirectory.mkdir()) {
+          File file = new File(uploadsDirectory, new Date().getTime() + "." + ext);
+          Files.copy(userImageFilePart.getFile().toPath(), file.toPath());
+          return file.getCanonicalPath();
+        }
+      }
     }
-      System.out.println(fileName + "You made it here");
-      return ok("File uploaded");
-    } else {
-      flash("error", "Missing file");
-      return redirect(routes.Application.appInterface());    
-    }
+    return null;
   }
 }
