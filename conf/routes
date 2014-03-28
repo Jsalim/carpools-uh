@@ -14,6 +14,7 @@ GET     /app                        controllers.Application.appInterface()
 GET     /app/profile                controllers.Application.appProfile()
 GET     /app/requests               controllers.Application.appRequests()
 
+POST    /app/upload                 controllers.Application.upload()
 POST    /app/saveProfile            controllers.Application.saveProfile()
 POST    /app/sendRequest            controllers.Application.sendRequest()
 

@@ -9,7 +9,6 @@ public class UserFormData {
   public boolean isDriver;
   public String origin;
   public String comment;
-
   public String userImage;
   public String vehicleImage;
 
@@ -38,7 +37,7 @@ public class UserFormData {
     this.isDriver = false;
     this.origin = "";
     this.comment = "";
-
+    
     this.userImage = "";
     this.vehicleImage = "";
 
@@ -60,7 +59,7 @@ public class UserFormData {
     this.isDriver = user.isDriver();
     this.origin = user.origin();
     this.comment = user.comment();
-
+    
     this.userImage = user.userImage();
     this.vehicleImage = user.vehicleImage();
 

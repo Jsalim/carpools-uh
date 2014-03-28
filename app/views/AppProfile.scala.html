@@ -20,7 +20,7 @@
 
     <input type="hidden" name="username" value="@userForm("username").value" />
 
-    <div class="form-group">
+    <div class="form-group">    
       <label>Name</label>
       <input class="form-control" type="text" name="name" placeholder="Preferred Name" value="@userForm("name").value" />
     </div>
@@ -41,6 +41,7 @@
           <img src="@routes.Assets.at("images/default.png")">
         </a>
       </div>
+
       <div class="col-sm-6 col-md-4 col-lg-3">
         <label>Image of Your Vehicle</label>
         <a class="thumbnail" href="#">
@@ -48,6 +49,11 @@
         </a>
       </div>
     </div>
+    
+    <form action="routes.Application.upload">
+      <input type="file" name="picture" accept="image/*">
+      <input type="submit">
+    </form> 
 
     <div class="row">
       <div class="col-sm-6 form-group">
