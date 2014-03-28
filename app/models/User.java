@@ -89,7 +89,7 @@ public class User {
    * Saves a <code>User</code> based on the <code>UserFormData</code> given.
    */
   public static User save(UserFormData formData) {
-    User user = users.get(formData.username);
+    User user = User.get(formData.username);
     user.name(formData.name);
     user.isDriver(formData.isDriver);
     user.origin(formData.origin);
@@ -117,6 +117,9 @@ public class User {
     user.returnW(formData.returnW);
     user.returnR(formData.returnR);
     user.returnF(formData.returnF);
+    
+    user.hideAlerts(formData.hideAlerts);
+
     return user;
   }
 
@@ -153,6 +156,7 @@ public class User {
   private boolean noEating;
   private boolean noDrinking;
   private boolean sameGender;
+  public boolean hideAlerts;
   // times
   private String arrivalM;
   private String arrivalT;
@@ -178,11 +182,12 @@ public class User {
 
     this.userImage = "";
     this.vehicleImage = "";
-
+    
     this.noSmoking = true;
     this.noEating = true;
     this.noDrinking = true;
     this.sameGender = false;
+    this.hideAlerts = false;
 
     this.arrivalM = this.arrivalT = this.arrivalW = this.arrivalR = this.arrivalF = "";
     this.returnM = this.returnT = this.returnW = this.returnR = this.returnF = "";
@@ -245,6 +250,11 @@ public class User {
   public boolean sameGender() { return this.sameGender; }
   /** Setter for sameGender. */
   public boolean sameGender(boolean value) { return (this.sameGender = value); }
+
+  /** Getter for hideAlerts. */
+  public boolean hideAlerts() { return hideAlerts; }
+  /** Setter for hideAlerts. */
+  public boolean hideAlerts(boolean value) { return (this.hideAlerts = value); }
 
   /** Getter for arrivalM. */
   public String arrivalM() { return this.arrivalM; }
