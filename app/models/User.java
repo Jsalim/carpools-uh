@@ -94,8 +94,12 @@ public class User {
     user.isDriver(formData.isDriver);
     user.origin(formData.origin);
 
-    user.userImage(formData.userImage);
-    user.vehicleImage(formData.vehicleImage);
+    if(!formData.userImage.isEmpty()) {
+      user.userImage(formData.userImage);
+    }
+    if(!formData.vehicleImage.isEmpty()) {
+      user.vehicleImage(formData.vehicleImage);
+    }
     
     user.noSmoking(formData.noSmoking);
     user.noEating(formData.noEating);

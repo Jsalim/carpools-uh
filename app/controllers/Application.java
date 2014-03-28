@@ -117,6 +117,8 @@ public class Application extends Controller {
   @Security.Authenticated(Secured.class)
   public static Result saveProfile() throws IOException {
     Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
+    String userImage = Application.uploadImage(request().body().asMultipartFormData(), "userImage");
+    String vehicleImage = Application.uploadImage(request().body().asMultipartFormData(), "vehicleImage");
     
     if(userForm.hasErrors()) {
       Data data = new Data();
@@ -125,9 +127,7 @@ public class Application extends Controller {
       return badRequest(AppProfile.render(data, userForm));
     } else {
       UserFormData userFormData = userForm.get();
-      String userImage = Application.uploadImage(request().body().asMultipartFormData(), "userImage");
-      String vehicleImage = Application.uploadImage(request().body().asMultipartFormData(), "vehicleImage");
-
+      System.out.println(userImage);
       if(userImage != null) {
         userFormData.userImage = userImage;
       }
