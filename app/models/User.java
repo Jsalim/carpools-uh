@@ -96,12 +96,12 @@ public class User {
 
     if(formData.removeUserImage) {
       user.userImage("");
-    } else if(!formData.userImage.isEmpty()) {
+    } else if(formData.userImage != null && !formData.userImage.isEmpty()) {
       user.userImage(formData.userImage);
     }
     if(formData.removeVehicleImage) {
       user.vehicleImage("");
-    } else if(!formData.vehicleImage.isEmpty()) {
+    } else if(formData.vehicleImage != null && !formData.vehicleImage.isEmpty()) {
       user.vehicleImage(formData.vehicleImage);
     }
     

@@ -127,13 +127,8 @@ public class Application extends Controller {
       return badRequest(AppProfile.render(data, userForm));
     } else {
       UserFormData userFormData = userForm.get();
-      System.out.println(userImage);
-      if(userImage != null) {
-        userFormData.userImage = userImage;
-      }
-      if(vehicleImage != null) {
-        userFormData.vehicleImage = vehicleImage;
-      }
+      userFormData.userImage = userImage;
+      userFormData.vehicleImage = vehicleImage;
       User.save(userFormData); 
     }
     return redirect(routes.Application.appProfile());
