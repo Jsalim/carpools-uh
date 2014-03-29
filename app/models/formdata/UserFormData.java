@@ -1,5 +1,8 @@
 package models.formdata;
 
+import java.util.ArrayList;
+import java.util.List;
+import play.data.validation.ValidationError;
 import models.User;
 
 public class UserFormData {
@@ -88,5 +91,11 @@ public class UserFormData {
     this.returnW = user.returnW();
     this.returnR = user.returnR();
     this.returnF = user.returnF();
+  }
+  
+  public List<ValidationError> validate() {
+    List<ValidationError> errors = new ArrayList<>();
+    
+    return errors.isEmpty() ? null : errors; 
   }
 }
