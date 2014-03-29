@@ -3,24 +3,10 @@
 @App(data) {
 
 <div class="interface">
-
-  @if(flash.containsKey("success")) {
-    <div class="alert alert-success alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <p>
-        <strong>Success!</strong>
-      </p>
-      <p>
-        @flash.get("success")
-      </p>
-    </div>
-  }
   @if(!data.getUser("user").hideAlerts()) {
     <div class="alert alert-warning alert-dismissable">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <p>
-        <strong>Getting Started</strong>
-      </p>
+      <h4>Getting Started</h4>
       <p>
         Browse below for available rides. Use the filtering options to quickly find rides relevant to you.
       </p>

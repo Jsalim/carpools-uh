@@ -5,9 +5,7 @@
 @if(!data.getUser("user").hideAlerts()) {
   <div class="alert alert-warning alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <p>
-      <strong>Getting Started</strong>
-    </p>
+    <h4>Getting Started</h4>
     <p>
       This page shows you all requests. Ones that you have made, and ones that others are requesting of you.
     </p>
@@ -20,8 +18,8 @@
 <table class="table table-condensed">
 <thead>
   <tr>
-    <th>Requester <small class="text-muted">Username</small></th>
-    <th>Days <small class="text-muted">Times</small></th>
+    <th>Requester</th>
+    <th>Days (Times)</th>
     <th>Action</th>
   </tr>
 </thead>
@@ -29,8 +27,8 @@
     <tr>
       <td>John Smith <small class="text-muted">jsmith</small></td>
       <td>
-        Mon <small class="text-muted">10:30a, 4:00p</small>,
-        Wed <small class="text-muted">10:30a, 3:00p</small>
+        <strong>Mon</strong> (10:30a, 4:00p),
+        <strong>Wed</strong> (10:30a, 3:00p)
       </td>
       <td>
         <div class="btn-group">
@@ -42,8 +40,8 @@
     <tr>
       <td>Jane Doe <small class="text-muted">jdoe</small></td>
       <td>
-        Tue <small class="text-muted">11:10a, 2:30p</small>,
-        Fri <small class="text-muted">9:20a, 4:00p</small>
+        <strong>Tue</strong> (11:10a, 2:30p),
+        <strong>Fri</strong> (9:20a, 4:00p)
       </td>
       <td>
         <div class="btn-group">
