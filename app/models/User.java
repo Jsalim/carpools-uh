@@ -94,10 +94,14 @@ public class User {
     user.isDriver(formData.isDriver);
     user.origin(formData.origin);
 
-    if(!formData.userImage.isEmpty()) {
+    if(formData.removeUserImage) {
+      user.userImage("");
+    } else if(!formData.userImage.isEmpty()) {
       user.userImage(formData.userImage);
     }
-    if(!formData.vehicleImage.isEmpty()) {
+    if(formData.removeVehicleImage) {
+      user.vehicleImage("");
+    } else if(!formData.vehicleImage.isEmpty()) {
       user.vehicleImage(formData.vehicleImage);
     }
     

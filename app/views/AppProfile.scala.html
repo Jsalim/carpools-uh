@@ -34,28 +34,28 @@
     </h2>
 
     <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-sm-6 col-md-4 col-lg-3 image-previewer">
         <label>Image of Yourself</label>
-        <a class="thumbnail image-input" href="#" data-target="#userImage">
-          @if(userForm("userImage").value.length == 0) {
-            <img src="@routes.Assets.at("images/default.png")" />
-          } else {
-            <img src="@routes.Assets.at(userForm("userImage").value)" />
-          }
+        <a class="thumbnail image-input" href="#">
+          <img src="@if(userForm("userImage").value.length == 0) { @routes.Assets.at("images/default.png") } else { @routes.Assets.at(userForm("userImage").value) }"
+               data-default="@routes.Assets.at("images/default.png")" />
         </a>
-        <input class="hidden-file-input" id="userImage" type="file" name="userImage" accept="image/*">
+        <input class="hidden-file-input" type="file" name="userImage" accept="image/*">
+        <div class="checkbox">
+          <label><input class="remove-image" type="checkbox" name="removeUserImage" /> Remove Image</label>
+        </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-sm-6 col-md-4 col-lg-3 image-previewer">
         <label>Image of Your Vehicle</label>
-        <a class="thumbnail image-input" href="#" data-target="#vehicleImage">
-          @if(userForm("vehicleImage").value.length == 0) {
-            <img src="@routes.Assets.at("images/default.png")" />
-          } else {
-            <img src="@routes.Assets.at(userForm("vehicleImage").value)" />
-          }
+        <a class="thumbnail image-input" href="#">
+          <img src="@if(userForm("vehicleImage").value.length == 0) { @routes.Assets.at("images/default.png") } else { @routes.Assets.at(userForm("vehicleImage").value) }"
+               data-default="@routes.Assets.at("images/default.png")" />
         </a>
-        <input class="hidden-file-input" id="vehicleImage" type="file" name="vehicleImage" accept="image/*">
+        <input class="hidden-file-input" type="file" name="vehicleImage" accept="image/*">
+        <div class="checkbox">
+          <label><input class="remove-image" type="checkbox" name="removeVehicleImage" /> Remove Image</label>
+        </div>
       </div>
     </div>
 

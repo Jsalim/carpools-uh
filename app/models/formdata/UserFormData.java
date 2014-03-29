@@ -11,6 +11,8 @@ public class UserFormData {
   public String comment;
   public String userImage;
   public String vehicleImage;
+  public boolean removeUserImage;
+  public boolean removeVehicleImage;
 
   public boolean noSmoking;
   public boolean noEating;
@@ -41,6 +43,8 @@ public class UserFormData {
     
     this.userImage = "";
     this.vehicleImage = "";
+    this.removeUserImage = false;
+    this.removeVehicleImage = false;
 
     this.noSmoking = false;
     this.noEating = false;
@@ -61,6 +65,8 @@ public class UserFormData {
     this.isDriver = user.isDriver();
     this.origin = user.origin();
     this.comment = user.comment();
+    this.removeUserImage = false;
+    this.removeVehicleImage = false;
     
     this.userImage = user.userImage();
     this.vehicleImage = user.vehicleImage();
