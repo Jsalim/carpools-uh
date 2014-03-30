@@ -50,7 +50,43 @@
         </div>
       </td>
     </tr>
+  
+  <div class = "drivers row">
+    @for(driver <- data.getUsers("drivers")) {
+    <tr>
+      <td>@driver.name() <small class="text-muted">@driver.username()</small></td>
+      <td>
+        <strong>Mon</strong> (@if(driver.arrivalM()) { @driver.arrivalM() } else { NA }, @if(driver.returnM()) { @driver.returnM() } else { NA }),
+        <strong>Tue</strong> (@if(driver.arrivalT()) { @driver.arrivalT() } else { NA }, @if(driver.returnT()) { @driver.returnT() } else { NA }),
+        <strong>Wed</strong> (@if(driver.arrivalW()) { @driver.arrivalW() } else { NA }, @if(driver.returnW()) { @driver.returnW() } else { NA }),
+        <strong>Thur</strong> (@if(driver.arrivalR()) { @driver.arrivalR() } else { NA }, @if(driver.returnR()) { @driver.returnR() } else { NA }),
+        <strong>Fri</strong> (@if(driver.arrivalF()) { @driver.arrivalF() } else { NA }, @if(driver.returnF()) { @driver.returnF() } else { NA })
+      </td>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-sm btn-success"><i class="fa fa-check"></i> Accept</button>
+          <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="reject"><i class="fa fa-times"></i> Reject</button>
+        </div>
+      </td>
+    </tr>
+    }
   </tbody>
 </table>
+</div>
 
+<div id="#reject" class="modal fade">
+     <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="form-group">
+                  <label>Message <small class="text-muted">Are you sure you wish to reject?</small></label>
+                  <textarea class="form-control" rows="3" name="message"></textarea>
+                </div>
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-comment"></i> Reject</button>
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+              </div>
+          
+          </div>
+        </div>
+</div>
 }

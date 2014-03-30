@@ -154,6 +154,7 @@ public class Application extends Controller {
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
     data.set("user", User.get(session().get("username")));
+    data.set("drivers", User.getAllDrivers());
     return ok(AppRequests.render(data));
   }
 
