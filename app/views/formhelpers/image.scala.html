@@ -13,5 +13,8 @@
   <input type="hidden" name="@field.name" value="@field.value.get" />
   <div class="checkbox">
     <label><input class="remove-image" type="checkbox" name="@(field.name + "Remove")" value="true" /> Remove Image</label>
+    @if(field.hasErrors) {
+    <span class="help-block text-danger">@field.error.get.message</span>
+  }
   </div>
 </div>

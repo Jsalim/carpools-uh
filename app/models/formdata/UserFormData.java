@@ -102,6 +102,12 @@ public class UserFormData {
       if(this.origin.isEmpty()) {
         errors.add(new ValidationError("origin", "Origin is required if you want to be a driver."));
       }
+      if(this.userImage.isEmpty()) {
+        errors.add(new ValidationError("userImage", "User Picture is required if you want to be a driver."));
+      }
+      if(this.vehicleImage.isEmpty()) {
+        errors.add(new ValidationError("vehicleImage", "Vehicle image is required if you want to be a driver."));
+      }
     }
 
     return errors.isEmpty() ? null : errors;
