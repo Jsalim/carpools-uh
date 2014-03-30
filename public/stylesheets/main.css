@@ -181,3 +181,6 @@ table#times-available td input[type="text"] {
 table#times-available th {
   vertical-align: middle;
 }
+table#times-available .form-group {
+  margin-bottom: 0;
+}

@@ -15,8 +15,8 @@ public class UserFormData {
 
   public String userImage;
   public String vehicleImage;
-  public boolean removeUserImage;
-  public boolean removeVehicleImage;
+  public boolean userImageRemove;
+  public boolean vehicleImageRemove;
 
   public boolean noSmoking;
   public boolean noEating;
@@ -47,8 +47,8 @@ public class UserFormData {
     
     this.userImage = "";
     this.vehicleImage = "";
-    this.removeUserImage = false;
-    this.removeVehicleImage = false;
+    this.userImageRemove = false;
+    this.vehicleImageRemove = false;
 
     this.noSmoking = false;
     this.noEating = false;
@@ -72,13 +72,12 @@ public class UserFormData {
     
     this.userImage = user.userImage();
     this.vehicleImage = user.vehicleImage();
-    this.removeUserImage = false;
-    this.removeVehicleImage = false;
+    this.userImageRemove = false;
+    this.vehicleImageRemove = false;
 
     this.noSmoking = user.noSmoking();
     this.noEating = user.noEating();
     this.noDrinking = user.noDrinking();
-    this.sameGender = user.sameGender();
     this.hideAlerts = user.hideAlerts();
 
     this.arrivalM = user.arrivalM();
@@ -96,6 +95,15 @@ public class UserFormData {
   public List<ValidationError> validate() {
     List<ValidationError> errors = new ArrayList<>();
     
-    return errors.isEmpty() ? null : errors; 
+    if(this.isDriver) {
+      if(this.name.isEmpty()) {
+        errors.add(new ValidationError("name", "Name is required if you want to be a driver."));        
+      }
+      if(this.origin.isEmpty()) {
+        errors.add(new ValidationError("origin", "Origin is required if you want to be a driver."));
+      }
+    }
+
+    return errors.isEmpty() ? null : errors;
   }
 }

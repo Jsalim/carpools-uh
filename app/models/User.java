@@ -1,11 +1,10 @@
 package models;
 
-import models.formdata.UserFormData;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import models.formdata.UserFormData;
 
 public class User {
 
@@ -93,22 +92,14 @@ public class User {
     user.name(formData.name);
     user.isDriver(formData.isDriver);
     user.origin(formData.origin);
+    user.comment(formData.comment);
 
-    if(formData.removeUserImage) {
-      user.userImage("");
-    } else if(formData.userImage != null && !formData.userImage.isEmpty()) {
-      user.userImage(formData.userImage);
-    }
-    if(formData.removeVehicleImage) {
-      user.vehicleImage("");
-    } else if(formData.vehicleImage != null && !formData.vehicleImage.isEmpty()) {
-      user.vehicleImage(formData.vehicleImage);
-    }
+    user.userImage(formData.userImage);
+    user.vehicleImage(formData.vehicleImage);
     
     user.noSmoking(formData.noSmoking);
     user.noEating(formData.noEating);
     user.noDrinking(formData.noDrinking);
-    user.sameGender(formData.sameGender);
 
     user.arrivalM(formData.arrivalM);
     user.arrivalT(formData.arrivalT);
@@ -159,7 +150,6 @@ public class User {
   private boolean noSmoking;
   private boolean noEating;
   private boolean noDrinking;
-  private boolean sameGender;
   public boolean hideAlerts;
   // times
   private String arrivalM;
@@ -190,7 +180,6 @@ public class User {
     this.noSmoking = true;
     this.noEating = true;
     this.noDrinking = true;
-    this.sameGender = false;
     this.hideAlerts = false;
 
     this.arrivalM = this.arrivalT = this.arrivalW = this.arrivalR = this.arrivalF = "";
@@ -249,11 +238,6 @@ public class User {
   public boolean noDrinking() { return this.noDrinking; }
   /** Setter for noDrinking. */
   public boolean noDrinking(boolean value) { return (this.noDrinking = value); }
-
-  /** Getter for sameGender. */
-  public boolean sameGender() { return this.sameGender; }
-  /** Setter for sameGender. */
-  public boolean sameGender(boolean value) { return (this.sameGender = value); }
 
   /** Getter for hideAlerts. */
   public boolean hideAlerts() { return hideAlerts; }

@@ -9,19 +9,22 @@ import java.util.Date;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import models.*;
-import models.formdata.*;
-import org.apache.commons.io.FileUtils;
+import models.Request;
+import models.User;
+import models.formdata.RequestFormData;
+import models.formdata.UserFormData;
 import org.w3c.dom.Document;
 import play.Play;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
-import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security;
-import views.html.*;
+import views.html.AppInterface;
+import views.html.AppProfile;
+import views.html.AppRequests;
+import views.html.Home;
 
 public class Application extends Controller {
   
@@ -116,22 +119,31 @@ public class Application extends Controller {
    */
   @Security.Authenticated(Secured.class)
   public static Result saveProfile() throws IOException {
-    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
-    String userImage = Application.uploadImage(request().body().asMultipartFormData(), "userImage");
-    String vehicleImage = Application.uploadImage(request().body().asMultipartFormData(), "vehicleImage");
+    User user = User.get(session().get("username"));
+    Data data = new Data();
+    data.set("pageTitle", "Carpools UH");
+    data.set("user", user);
     
+    Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
     if(userForm.hasErrors()) {
-      Data data = new Data();
-      data.set("pageTitle", "Carpools UH");
-      data.set("user", User.get(session().get("username")));
       return badRequest(AppProfile.render(data, userForm));
-    } else {
-      UserFormData userFormData = userForm.get();
-      userFormData.userImage = userImage;
-      userFormData.vehicleImage = vehicleImage;
-      User.save(userFormData); 
     }
-    return redirect(routes.Application.appProfile());
+
+    UserFormData userFormData = userForm.get();
+    MultipartFormData multipartFormData = request().body().asMultipartFormData();
+    if(userFormData.userImageRemove) {
+      userFormData.userImage = "";
+    } else {
+      userFormData.userImage = Application.uploadImage(multipartFormData, "userImage", user.userImage());
+    }
+    if(userFormData.vehicleImageRemove) {
+      userFormData.vehicleImage = "";
+    } else {
+      userFormData.vehicleImage = Application.uploadImage(multipartFormData, "vehicleImage", user.vehicleImage());
+    }
+    User.save(userFormData);
+    userForm.fill(userFormData);
+    return ok(AppProfile.render(data, userForm));
   }
 
   /**
@@ -164,13 +176,14 @@ public class Application extends Controller {
   }
   
   /**
-   * Uploads a file.
+   * Uploads a file if a file has been uploaded by the user.
    * @param multipartFormData
    * @param name
-   * @return Returns the location of the file.
+   * @param defaultValue
+   * @return Returns the resulting location of the file. If the user did not upload a file, return defaultValue.
    * @throws IOException If fails to save file.
    */
-  private static String uploadImage(MultipartFormData multipartFormData, String name) throws IOException {
+  private static String uploadImage(MultipartFormData multipartFormData, String name, String defaultValue) throws IOException {
     FilePart userImageFilePart = multipartFormData.getFile(name);
     if(userImageFilePart != null) {
       String contentType = userImageFilePart.getContentType();
@@ -184,6 +197,6 @@ public class Application extends Controller {
         }
       }
     }
-    return null;
+    return defaultValue;
   }
 }

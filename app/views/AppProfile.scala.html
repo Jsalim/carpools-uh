@@ -19,65 +19,43 @@
 
     <input type="hidden" name="username" value="@userForm("username").value" />
 
-    <div class="form-group">    
-      <label>Name</label>
-      <input class="form-control" type="text" name="name" placeholder="Preferred Name" value="@userForm("name").value" />
-    </div>
-
     <hr />
 
     <h2>
       <label>
-        <input type="checkbox" name="isDriver" @if(userForm("isDriver").value == "true") { checked }/> Driver
+        @formhelpers.checkbox(userForm("isDriver")) Driver
         <small>(Check to enable other users to find and request a ride from you)</small>
       </label>
     </h2>
 
-    <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3 image-previewer">
-        <label>Image of Yourself</label>
-        <a class="thumbnail image-input" href="#">
-          <img src="@if(userForm("userImage").value.length == 0) { @routes.Assets.at("images/default.png") } else { @routes.Assets.at(userForm("userImage").value) }"
-               data-default="@routes.Assets.at("images/default.png")" />
-        </a>
-        <input class="hidden-file-input" type="file" name="userImage" accept="image/*">
-        <div class="checkbox">
-          <label><input class="remove-image" type="checkbox" name="removeUserImage" /> Remove Image</label>
-        </div>
-      </div>
+    @formhelpers.text(userForm("name"), label="Name", placeholder="What's your name?")
 
-      <div class="col-sm-6 col-md-4 col-lg-3 image-previewer">
-        <label>Image of Your Vehicle</label>
-        <a class="thumbnail image-input" href="#">
-          <img src="@if(userForm("vehicleImage").value.length == 0) { @routes.Assets.at("images/default.png") } else { @routes.Assets.at(userForm("vehicleImage").value) }"
-               data-default="@routes.Assets.at("images/default.png")" />
-        </a>
-        <input class="hidden-file-input" type="file" name="vehicleImage" accept="image/*">
-        <div class="checkbox">
-          <label><input class="remove-image" type="checkbox" name="removeVehicleImage" /> Remove Image</label>
-        </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        @formhelpers.image(userForm("userImage"), label="Image of Yourself")
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        @formhelpers.image(userForm("vehicleImage"), label="Image of Yourself")
       </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-6 form-group">
-        <label>Origin</label>  
-        <input class="form-control" type="text" name="origin" placeholder="Where do you live?" value="@userForm("origin").value" />
+      <div class="col-sm-6">
+        @formhelpers.text(userForm("origin"), label="Origin", placeholder="Where do you live?")
+
+        @formhelpers.textarea(userForm("comment"), label="Comment", placeholder="Message for potential carpoolers.")
       </div>
 
       <div class="col-sm-6 form-group">
         <label>Preferences</label>
         <div class="checkbox">
-          <label><input type="checkbox" name="noSmoking" @if(userForm("noSmoking").value == "true") { checked }/> No Smoking</label>
+          <label>@formhelpers.checkbox(userForm("noSmoking")) No Smoking</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" name="noEating" @if(userForm("noEating").value == "true") { checked }/> No Eating</label>
+          <label>@formhelpers.checkbox(userForm("noEating")) No Eating</label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" name="noDrinking" @if(userForm("noDrinking").value == "true") { checked }/> No Drinking</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" name="sameGender" @if(userForm("sameGender").value == "true") { checked }/> Same Gender</label>
+          <label>@formhelpers.checkbox(userForm("noDrinking")) No Drinking</label>
         </div>
       </div>
     </div>
@@ -97,28 +75,28 @@
       <tbody>
         <tr>
           <th>Arrival</th>
-          <td><input class="form-control" type="text" name="arrivalM" value="@userForm("arrivalM").value" /></td>
-          <td><input class="form-control" type="text" name="arrivalT" value="@userForm("arrivalT").value" /></td>
-          <td><input class="form-control" type="text" name="arrivalW" value="@userForm("arrivalW").value" /></td>
-          <td><input class="form-control" type="text" name="arrivalR" value="@userForm("arrivalR").value" /></td>
-          <td><input class="form-control" type="text" name="arrivalF" value="@userForm("arrivalF").value" /></td>
+          <td>@formhelpers.text(userForm("arrivalM"))</td>
+          <td>@formhelpers.text(userForm("arrivalT"))</td>
+          <td>@formhelpers.text(userForm("arrivalW"))</td>
+          <td>@formhelpers.text(userForm("arrivalR"))</td>
+          <td>@formhelpers.text(userForm("arrivalF"))</td>
         </tr>
         <tr>
           <th>Return</th>
-          <td><input class="form-control" type="text" name="returnM" value="@userForm("returnM").value" /></td>
-          <td><input class="form-control" type="text" name="returnT" value="@userForm("returnT").value" /></td>
-          <td><input class="form-control" type="text" name="returnW" value="@userForm("returnW").value" /></td>
-          <td><input class="form-control" type="text" name="returnR" value="@userForm("returnR").value" /></td>
-          <td><input class="form-control" type="text" name="returnF" value="@userForm("returnF").value" /></td>
+          <td>@formhelpers.text(userForm("returnM"))</td>
+          <td>@formhelpers.text(userForm("returnT"))</td>
+          <td>@formhelpers.text(userForm("returnW"))</td>
+          <td>@formhelpers.text(userForm("returnR"))</td>
+          <td>@formhelpers.text(userForm("returnF"))</td>
         </tr>
       </tbody>
     </table>
 
     <hr />
 
-    <h3>Options</h3>
+    <h2>Options</h2>
     <div class="checkbox">
-      <label><input type="checkbox" name="hideAlerts" @if(userForm("hideAlerts").value == "true") { checked }/> Hide Help Text</label>
+      <label>@formhelpers.checkbox(userForm("hideAlerts")) Hide Help Text</label>
     </div>
 
     <hr />

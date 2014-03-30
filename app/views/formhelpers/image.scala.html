@@ -1,0 +1,16 @@
+@(field:Field, label:String = "")
+
+<div class="image-previewer">
+  @if(!label.isEmpty()) {
+    <label>Image of Yourself</label>
+  }
+  
+  <a class="thumbnail image-input" href="#">
+    <img src="@if(!field.value.isDefined || field.value.get.isEmpty) { @routes.Assets.at("images/default.png") } else { @routes.Assets.at(field.value.get) }"
+         data-default="@routes.Assets.at("images/default.png")" />
+  </a>
+  <input class="hidden-file-input" type="file" name="@field.name" accept="image/*">
+  <div class="checkbox">
+    <label><input class="remove-image" type="checkbox" name="@(field.name + "Remove")" value="true" /> Remove Image</label>
+  </div>
+</div>
