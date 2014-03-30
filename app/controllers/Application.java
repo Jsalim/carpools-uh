@@ -142,6 +142,7 @@ public class Application extends Controller {
       userFormData.vehicleImage = Application.uploadImage(multipartFormData, "vehicleImage", user.vehicleImage());
     }
     User.save(userFormData);
+    flash().put("success", "Changes saved.");
     return redirect(routes.Application.appProfile());
   }
 
