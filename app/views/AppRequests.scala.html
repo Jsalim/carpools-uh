@@ -65,28 +65,28 @@
       <td>
         <div class="btn-group">
           <button class="btn btn-sm btn-success"><i class="fa fa-check"></i> Accept</button>
-          <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="reject"><i class="fa fa-times"></i> Reject</button>
+          <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#reject"><i class="fa fa-times"></i> Reject</button>
         </div>
       </td>
     </tr>
-    }
+}
   </tbody>
 </table>
-</div>
 
-<div id="#reject" class="modal fade">
+
+<div id="reject" class="modal fade">
      <div class="modal-dialog">
           <div class="modal-content">
           <div class="form-group">
-                  <label>Message <small class="text-muted">Are you sure you wish to reject?</small></label>
-                  <textarea class="form-control" rows="3" name="message"></textarea>
-                </div>
-                <div class="modal-footer">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-comment"></i> Reject</button>
+                  <label>Are you sure you wish to reject?</label>
+          </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-times"></i> Reject</button>
                 <button class="btn btn-default" data-dismiss="modal">Cancel</button>
               </div>
           
           </div>
         </div>
 </div>
+
 }
