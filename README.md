@@ -10,6 +10,9 @@ https://github.com/CarpoolsUH/carpools-uh/wiki/Mockup-Evaluation
 Use Cases
 https://github.com/CarpoolsUH/carpools-uh/wiki/Use-Cases
 
+Use Cases 2.0
+https://github.com/CarpoolsUH/carpools-uh/wiki/Use-Cases-2.0
+
 Team Meetings
 https://github.com/CarpoolsUH/carpools-uh/wiki/Team-Meetings
 
@@ -18,6 +21,9 @@ https://github.com/CarpoolsUH/carpools-uh/wiki/User-Interviews
 
 Related Research
 https://github.com/CarpoolsUH/carpools-uh/wiki/Related-Technologies
+
+Installation Instructions 2.0
+https://github.com/CarpoolsUH/carpools-uh/wiki/Installation-Instructions-2.0
 
 Live mockup
 http://carpoolsuh.github.io/ui-mockup/
