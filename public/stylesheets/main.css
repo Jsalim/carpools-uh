@@ -106,22 +106,22 @@ h1, h2, h3, h4, h5, h6 {
 .application .interface .driver .preferences {
   float: left;
 }
-.application .interface .driver .preferences li {
+.application .interface .icon {
   background-size: contain;
   display: inline-block;
   width: 20px;
   height: 20px;
 }
-.application .interface .driver .preferences li.no-smoking {
+.application .interface .no-smoking {
   background-image: url('../images/icons/no_smoking.png');
 }
-.application .interface .driver .preferences li.no-eating {
+.application .interface .no-eating {
   background-image: url('../images/icons/no_eating.png');
 }
-.application .interface .driver .preferences li.no-drinking {
+.application .interface .no-drinking {
   background-image: url('../images/icons/no_drinking.png');
 }
-.application .interface .driver .preferences .tooltip {
+.application .interface .tooltip {
   white-space: nowrap;
 }
 

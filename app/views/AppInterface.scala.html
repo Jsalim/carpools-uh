@@ -116,13 +116,13 @@
             </table>
             <ul class="preferences">
               @if(driver.noSmoking()) {
-                <li class="no-smoking" data-toggle="tooltip" data-placement="top" title="No Smoking"></li>
+                <li class="icon no-smoking" data-toggle="tooltip" data-placement="top" title="No Smoking"></li>
               }
               @if(driver.noEating()) {
-                <li class="no-eating" data-toggle="tooltip" data-placement="top" title="No Eating"></li>
+                <li class="icon no-eating" data-toggle="tooltip" data-placement="top" title="No Eating"></li>
               }
               @if(driver.noDrinking()) {
-                <li class="no-drinking" data-toggle="tooltip" data-placement="top" title="No Drinking"></li>
+                <li class="icon no-drinking" data-toggle="tooltip" data-placement="top" title="No Drinking"></li>
               }
             </ul>
             <div class="meta">
@@ -166,7 +166,23 @@
                   </div>
                   <div class="col-sm-6">
                     <p><strong>Location:</strong> @driver.origin()</p>
-                    <p><strong>Comment:</strong> @driver.comment()</p>
+                    <p>
+                      <strong>Comment:</strong>
+                      @if(!driver.comment().isEmpty()) {
+                        @driver.comment()
+                      } else { - }
+                    </p>
+                    <p>
+                      @if(driver.noSmoking()) {
+                        <span class="icon no-smoking" data-toggle="tooltip" data-placement="top" title="No Smoking"></span>
+                      }
+                      @if(driver.noEating()) {
+                        <span class="icon no-eating" data-toggle="tooltip" data-placement="top" title="No Eating"></span>
+                      }
+                      @if(driver.noDrinking()) {
+                        <span class="icon no-drinking" data-toggle="tooltip" data-placement="top" title="No Drinking"></span>
+                      }
+                    </p>
                   </div>
                 </div>
                 <hr/>
@@ -185,37 +201,27 @@
                       <td>
                         @if(driver.arrivalM().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="arrivalM"> @driver.arrivalM()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.arrivalT().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="arrivalT"> @driver.arrivalT()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.arrivalW().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="arrivalW"> @driver.arrivalW()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.arrivalR().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="arrivalR"> @driver.arrivalR()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.arrivalF().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="arrivalF"> @driver.arrivalF()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                     </tr>
                     <tr>
@@ -223,37 +229,27 @@
                       <td>
                         @if(driver.returnM().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="returnM"> @driver.returnM()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.returnT().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="returnT"> @driver.returnT()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.returnW().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="returnW"> @driver.returnW()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.returnR().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="returnR"> @driver.returnR()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                       <td>
                         @if(driver.returnF().length > 0) {
                           <div class="checkbox"><label><input type="checkbox" name="returnF"> @driver.returnF()</label></div>
-                        } else {
-                          -
-                        }
+                        } else { - }
                       </td>
                     </tr>
                   </tbody>
