@@ -6,7 +6,7 @@ import play.data.validation.ValidationError;
 import models.User;
 
 public class UserFormData {
-
+ 
   public String username;
   public String name;
   public boolean isDriver;
@@ -35,6 +35,8 @@ public class UserFormData {
   public String returnR;
   public String returnF;
 
+ 
+  
   /**
    * Constructor. Used internally. Should <strong>NOT</strong> be called directly.
    */
@@ -94,6 +96,19 @@ public class UserFormData {
   
   public List<ValidationError> validate() {
     List<ValidationError> errors = new ArrayList<>();
+    Time12HoursValidator time12HoursValidator;
+    time12HoursValidator = new Time12HoursValidator();
+    boolean validAM = time12HoursValidator.validate(this.arrivalM);
+    boolean validAT = time12HoursValidator.validate(this.arrivalT);
+    boolean validAW = time12HoursValidator.validate(this.arrivalW);
+    boolean validAR = time12HoursValidator.validate(this.arrivalR);
+    boolean validAF = time12HoursValidator.validate(this.arrivalF);
+    boolean validRM = time12HoursValidator.validate(this.returnM);
+    boolean validRT = time12HoursValidator.validate(this.returnT);
+    boolean validRW = time12HoursValidator.validate(this.returnW);
+    boolean validRR = time12HoursValidator.validate(this.returnR);
+    boolean validRF= time12HoursValidator.validate(this.returnF);
+    
     
     if(this.isDriver) {
       if(this.name.isEmpty()) {
@@ -111,6 +126,36 @@ public class UserFormData {
       if(this.arrivalM.isEmpty() && this.arrivalT.isEmpty() && this.arrivalW.isEmpty() && this.arrivalR.isEmpty() && this.arrivalF.isEmpty() 
           && this.returnM.isEmpty() && this.returnT.isEmpty() && this.returnW.isEmpty() && this.returnR.isEmpty() && this.returnF.isEmpty()) {
         errors.add(new ValidationError("returnM", "At least one time must be entered if you want to be a driver"));
+      }
+      if(validAM == false && !this.arrivalM.isEmpty()) {
+        errors.add(new ValidationError("arrivalM", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validAT == false && !this.arrivalT.isEmpty()) {
+        errors.add(new ValidationError("arrivalT", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validAW == false && !this.arrivalW.isEmpty()) {
+        errors.add(new ValidationError("arrivalW", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validAR == false && !this.arrivalR.isEmpty()) {
+        errors.add(new ValidationError("arrivalR", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validAF == false && !this.arrivalF.isEmpty()) {
+        errors.add(new ValidationError("arrivalF", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validRM == false && !this.returnM.isEmpty()) {
+        errors.add(new ValidationError("returnM", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validRT == false && !this.returnT.isEmpty()) {
+        errors.add(new ValidationError("returnT", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validRW == false && !this.returnW.isEmpty()) {
+        errors.add(new ValidationError("returnW", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validRR == false && !this.returnR.isEmpty()) {
+        errors.add(new ValidationError("returnR", "You entered a invalid time format e.g. '12:00am'"));
+      }
+      if(validRF == false && !this.returnF.isEmpty()) {
+        errors.add(new ValidationError("returnF", "You entered a invalid time format e.g. '12:00am'"));
       }
     }
 
