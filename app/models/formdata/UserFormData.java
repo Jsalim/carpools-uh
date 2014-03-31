@@ -108,8 +108,8 @@ public class UserFormData {
       if(this.vehicleImage.isEmpty()) {
         errors.add(new ValidationError("vehicleImage", "Vehicle image is required if you want to be a driver."));
       }
-      if(this.arrivalM.isEmpty() || this.arrivalT.isEmpty() || this.arrivalW.isEmpty() || this.arrivalR.isEmpty() || this.arrivalF.isEmpty() 
-          || this.returnM.isEmpty() || this.returnT.isEmpty() || this.returnW.isEmpty() || this.returnR.isEmpty() || this.returnF.isEmpty()) {
+      if(this.arrivalM.isEmpty() && this.arrivalT.isEmpty() && this.arrivalW.isEmpty() && this.arrivalR.isEmpty() && this.arrivalF.isEmpty() 
+          && this.returnM.isEmpty() && this.returnT.isEmpty() && this.returnW.isEmpty() && this.returnR.isEmpty() && this.returnF.isEmpty()) {
         errors.add(new ValidationError("returnM", "At least one time must be entered if you want to be a driver"));
       }
     }
