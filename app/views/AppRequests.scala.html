@@ -16,77 +16,110 @@
 
 <h4>Pending Requests <small class="text-muted">People requesting a ride</small></h4>
 <table class="table table-condensed">
-<thead>
-  <tr>
-    <th>Requester</th>
-    <th>Days (Times)</th>
-    <th>Action</th>
-  </tr>
-</thead>
+  <thead>
+    <tr>
+      <th>Requester</th>
+      <th>Days (Times)</th>
+      <th>Action</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
       <td>John Smith <small class="text-muted">jsmith</small></td>
-      <td>
-        <strong>Mon</strong> (10:30a, 4:00p),
-        <strong>Wed</strong> (10:30a, 3:00p)
-      </td>
+      <td><strong>Mon</strong> (10:30a, 4:00p), <strong>Wed</strong> (10:30a, 3:00p)</td>
       <td>
         <div class="btn-group">
-          <button class="btn btn-sm btn-success"><i class="fa fa-check"></i> Accept</button>
-          <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Reject</button>
+          <button class="btn btn-sm btn-success">
+            <i class="fa fa-check"></i> Accept
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fa fa-times"></i> Reject
+          </button>
         </div>
       </td>
     </tr>
     <tr>
       <td>Jane Doe <small class="text-muted">jdoe</small></td>
-      <td>
-        <strong>Tue</strong> (11:10a, 2:30p),
-        <strong>Fri</strong> (9:20a, 4:00p)
-      </td>
+      <td><strong>Tue</strong> (11:10a, 2:30p), <strong>Fri</strong> (9:20a, 4:00p)</td>
       <td>
         <div class="btn-group">
-          <button class="btn btn-sm btn-success"><i class="fa fa-check"></i> Accept</button>
-          <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Reject</button>
+          <button class="btn btn-sm btn-success">
+            <i class="fa fa-check"></i> Accept
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fa fa-times"></i> Reject
+          </button>
         </div>
       </td>
     </tr>
-  
-  <div class = "drivers row">
-    @for(driver <- data.getUsers("drivers")) {
+
+    <div class="drivers row">@for(driver <- data.getUsers("drivers")) {
     <tr>
       <td>@driver.name() <small class="text-muted">@driver.username()</small></td>
       <td>
-        <strong>Mon</strong> (@if(driver.arrivalM()) { @driver.arrivalM() } else { NA }, @if(driver.returnM()) { @driver.returnM() } else { NA }),
-        <strong>Tue</strong> (@if(driver.arrivalT()) { @driver.arrivalT() } else { NA }, @if(driver.returnT()) { @driver.returnT() } else { NA }),
-        <strong>Wed</strong> (@if(driver.arrivalW()) { @driver.arrivalW() } else { NA }, @if(driver.returnW()) { @driver.returnW() } else { NA }),
-        <strong>Thur</strong> (@if(driver.arrivalR()) { @driver.arrivalR() } else { NA }, @if(driver.returnR()) { @driver.returnR() } else { NA }),
+        <strong>Mon</strong> (@if(driver.arrivalM()) { @driver.arrivalM() } else { NA }, @if(driver.returnM()) { @driver.returnM() } else { NA }), 
+        <strong>Tue</strong> (@if(driver.arrivalT()) { @driver.arrivalT() } else { NA }, @if(driver.returnT()) { @driver.returnT() } else { NA }), 
+        <strong>Wed</strong> (@if(driver.arrivalW()) { @driver.arrivalW() } else { NA }, @if(driver.returnW()) { @driver.returnW() } else { NA }), 
+        <strong>Thur</strong>(@if(driver.arrivalR()) { @driver.arrivalR() } else { NA }, @if(driver.returnR()) { @driver.returnR() } else { NA }), 
         <strong>Fri</strong> (@if(driver.arrivalF()) { @driver.arrivalF() } else { NA }, @if(driver.returnF()) { @driver.returnF() } else { NA })
       </td>
       <td>
         <div class="btn-group">
-          <button class="btn btn-sm btn-success"><i class="fa fa-check"></i> Accept</button>
-          <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#reject"><i class="fa fa-times"></i> Reject</button>
+          <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#accept-@driver.id()">
+            <i class="fa fa-check"></i> Accept
+          </button>
+          <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#reject-@driver.id()">
+            <i class="fa fa-times"></i> Reject
+          </button>
         </div>
       </td>
     </tr>
-}
+
+    <div id="reject-@driver.id()" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="form-group">
+            <label>Are you sure you wish to reject?</label>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-times"></i> Reject
+            </button>
+            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="accept-@driver.id()" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          @helper.form(routes.Application.sendRequest) { 
+          <input type="hidden" name="requesterUsername" value="@data.getUser("user").username()" />
+          <input type="hidden" name="driverUsername" value="@driver.username()" />
+          <div class="form-group">
+            <label>Are you sure you wish to accept from</label>
+            <h4 class="modal-title">
+              @driver.name() <small>@driver.username()</small>
+            </h4>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa fa-check"></i> Accept
+            </button>
+            <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    }
   </tbody>
 </table>
 
 
-<div id="reject" class="modal fade">
-     <div class="modal-dialog">
-          <div class="modal-content">
-          <div class="form-group">
-                  <label>Are you sure you wish to reject?</label>
-          </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-times"></i> Reject</button>
-                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-              </div>
-          
-          </div>
-        </div>
-</div>
+
+
 
 }
