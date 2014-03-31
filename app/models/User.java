@@ -24,7 +24,7 @@ public class User {
    * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>username</code> already exists, returns the existing <code>User</code>.
    */
   public static User add(String username, String name) {
-    return User.add(username, name, false, "", "");
+    return User.add(username, name, "", "");
   }
 
   /**
@@ -36,11 +36,26 @@ public class User {
    * @param comment
    * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>username</code> already exists, returns the existing <code>User</code>.
    */
-  public static User add(String username, String name, boolean isDriver, String origin, String comment) {
+  public static User add(String username, String name, String origin, String comment) {
+    return User.add(username, name, "", "", "", "");
+  }
+
+  /**
+   * Adds a new <code>User</code> to the database.
+   * @param username UH username.
+   * @param name
+   * @param isDriver
+   * @param origin
+   * @param comment
+   * @return Returns the added <code>User</code>. If a <code>User</code> with the given <code>username</code> already exists, returns the existing <code>User</code>.
+   */
+  public static User add(String username, String name, String origin, String comment, String userImage, String vehicleImage) {
     User user = users.get(username);
     if(user == null) {
       long id = User._id++;
-      user = new User(id, username, name, isDriver, origin, comment);
+      user = new User(id, username, name, true, origin, comment);
+      user.userImage(userImage);
+      user.vehicleImage(vehicleImage);
       users.put(username, user);
     }
     return user;

@@ -10,21 +10,35 @@ public class Global extends GlobalSettings{
    */
   public void onStart(Application app) {
     
-    //       username     name                    driver  comment
-    User.add("awood",     "Andrew-Pearson Wood",  true,   "Salt Lake",  "No smokers. Let me know what your interests are so we can chat.");
-    User.add("awang",     "Alvin Wang",           true,   "Millilani",  "No smoking or eating please try to be on time.");
-    User.add("eshek",     "Eva Shek",             true,   "Kaneohe",    "");
-    User.add("shonda",    "Scott Honda",          true,   "Honolulu",   "Need gas money. Be clean. I won't wait for you if you are late.");
-    User.add("tkennedy",  "Taylor Kennedy",       false,  "Pearl City", "");
-    User.add("tpascua",   "Tyler Pascua",         false,  "Waianai",    "");
-    User.add("aprieto",   "Alvin Prieto",         true,   "Manoa",      "");
-    User.add("egamiao",   "Eduard Gamiao",        true,   "Haleiwa",    "");
-    User.add("ekomiyama", "Evan Komiyama",        true,   "Waipahu",    "");
-    User.add("nsmith",    "Nicholas Smith",       true,   "Salt Lake",  "I expect you to be sober.");
-    User.add("lli",       "Leo Li",               true,   "Millilani",  "Must have good hygiene please.");
-    User.add("tchida",    "Terrance Chida",       true,   "Salt Lake",  "");
-    User.add("jknaus",    "Jaki Knaus",           true,   "Waipahu",    "");
-    User.add("jlee",      "Janis Lee",            false,  "Aiea",       "");
+    //       username     name                    comment
+    User.add("awood",     "Andrew-Pearson Wood",  "Salt Lake",  "No smokers. Let me know what your interests are so we can chat.",
+              "images/profile/user/andrew.jpg",     "images/profile/vehicle/1.jpg");
+    User.add("awang",     "Alvin Wang",           "Millilani",  "No smoking or eating please try to be on time.",
+              "images/profile/user/alvinw.jpg",     "images/profile/vehicle/2.jpg");
+    User.add("eshek",     "Eva Shek",             "Kaneohe",    "",
+              "images/profile/user/evashek.jpg",    "images/profile/vehicle/3.jpg");
+    User.add("shonda",    "Scott Honda",          "Honolulu",   "Need gas money. Be clean. I won't wait for you if you are late.",
+              "images/profile/user/scott.jpg",      "images/profile/vehicle/4.jpg");
+    User.add("tkennedy",  "Taylor Kennedy",       "Pearl City", "",
+              "images/profile/user/taylor.jpg",     "images/profile/vehicle/5.jpg");
+    User.add("tpascua",   "Tyler Pascua",         "Waianai",    "",
+              "images/profile/user/tyler.jpg",      "images/profile/vehicle/6.jpg");
+    User.add("aprieto",   "Alvin Prieto",         "Manoa",      "",
+              "images/profile/user/alvin.jpg",      "images/profile/vehicle/7.jpg");
+    User.add("egamiao",   "Eduard Gamiao",        "Haleiwa",    "",
+              "images/profile/user/eduard.jpg",     "images/profile/vehicle/8.jpg");
+    User.add("ekomiyama", "Evan Komiyama",        "Waipahu",    "",
+              "images/profile/user/evan.jpg",       "images/profile/vehicle/9.jpg");
+    User.add("nsmith",    "Nicholas Smith",       "Salt Lake",  "I expect you to be sober.",
+              "images/profile/user/nick.jpg",       "images/profile/vehicle/10.jpg");
+    User.add("lli",       "Leo Li",               "Millilani",  "Must have good hygiene please.",
+              "images/profile/user/leo.jpg",        "images/profile/vehicle/11.jpg");
+    User.add("tchida",    "Terrance Chida",       "Salt Lake",  "",
+              "images/profile/user/terrance.jpg",   "images/profile/vehicle/12.jpg");
+    User.add("jknaus",    "Jaki Knaus",           "Waipahu",    "",
+              "images/profile/user/jaki.jpg",       "images/profile/vehicle/13.jpg");
+    User.add("jlee",      "Janis Lee",            "Aiea",       "",
+              "images/profile/user/janis.jpg",      "images/profile/vehicle/14.jpg");
 
     Random rand = new Random();
     for(User user : User.getAll()) {
