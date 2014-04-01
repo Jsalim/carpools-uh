@@ -53,7 +53,7 @@ public class User {
     User user = users.get(username);
     if(user == null) {
       long id = User._id++;
-      user = new User(id, username, name, true, origin, comment);
+      user = new User(id, username, name, false, origin, comment);
       user.userImage(userImage);
       user.vehicleImage(vehicleImage);
       users.put(username, user);

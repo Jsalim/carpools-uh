@@ -6,11 +6,11 @@
   }
   
   <a class="thumbnail image-input" href="#">
-    <img src="@if(!field.value.isDefined || field.value.get.isEmpty) {@routes.Assets.at("images/default.png")} else {@routes.Assets.at(field.value.get)}"
+    <img src="@if(!field.value.isDefined || field.value.get.isEmpty) {@routes.Assets.at("images/default.png")} else {@field.value.get}"
          data-default="@routes.Assets.at("images/default.png")" />
   </a>
   <input class="hidden-file-input" type="file" name="@field.name" accept="image/*">
-  <input type="hidden" name="@field.name" value="@field.value.get" />
+  <input type="hidden" name="@field.name" value="@field.value" />
   @if(field.hasErrors) {
     <span class="help-block text-danger">@field.error.get.message</span>
   } else {

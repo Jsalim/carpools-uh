@@ -1,7 +1,10 @@
 package controllers;
 
+
 import java.io.File;
 import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.file.Files;
@@ -13,6 +16,7 @@ import models.Request;
 import models.User;
 import models.formdata.RequestFormData;
 import models.formdata.UserFormData;
+import org.apache.commons.codec.binary.Base64;
 import org.w3c.dom.Document;
 import play.Play;
 import play.data.Form;
@@ -189,15 +193,34 @@ public class Application extends Controller {
     if(userImageFilePart != null) {
       String contentType = userImageFilePart.getContentType();
       if(contentType.indexOf("image") != -1) {
-        String ext = contentType.split("/")[1];
-        File uploadsDirectory = new File(Play.application().path().getAbsolutePath() + "/public/" + UPLOADS_DIRECTORY);
-        if(uploadsDirectory.exists() || uploadsDirectory.mkdir()) {
-          File file = new File(uploadsDirectory, new Date().getTime() + "." + ext);
-          Files.copy(userImageFilePart.getFile().toPath(), file.toPath());
-          return UPLOADS_DIRECTORY + "/" + file.getName();
-        }
+        byte[] bytes = loadFile(userImageFilePart.getFile());
+        byte[] encoded = Base64.encodeBase64(bytes);
+        return "data:" + contentType + ";base64," + (new String(encoded));
       }
     }
     return defaultValue;
+  }
+
+  private static byte[] loadFile(File file) throws IOException {
+    InputStream is = new FileInputStream(file);
+
+    long length = file.length();
+    if (length > Integer.MAX_VALUE) {
+      // File is too large
+    }
+    byte[] bytes = new byte[(int)length];
+    
+    int offset = 0;
+    int numRead = 0;
+    while (offset < bytes.length && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
+      offset += numRead;
+    }
+
+    if (offset < bytes.length) {
+      throw new IOException("Could not completely read file "+file.getName());
+    }
+
+    is.close();
+    return bytes;
   }
 }
