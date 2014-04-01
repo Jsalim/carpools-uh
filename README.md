@@ -1,35 +1,17 @@
 Wiki Links
 -------------
 
-Stakeholder Requirements
-https://github.com/CarpoolsUH/carpools-uh/wiki/Stakeholder-Requirements
-
-Mockup Evaluation
-https://github.com/CarpoolsUH/carpools-uh/wiki/Mockup-Evaluation
-
-Use Cases
-https://github.com/CarpoolsUH/carpools-uh/wiki/Use-Cases
-
 Use Cases 2.0
 https://github.com/CarpoolsUH/carpools-uh/wiki/Use-Cases-2.0
-
-Team Meetings
-https://github.com/CarpoolsUH/carpools-uh/wiki/Team-Meetings
-
-User Interviews
-https://github.com/CarpoolsUH/carpools-uh/wiki/User-Interviews
-
-Related Research
-https://github.com/CarpoolsUH/carpools-uh/wiki/Related-Technologies
 
 Installation Instructions 2.0
 https://github.com/CarpoolsUH/carpools-uh/wiki/Installation-Instructions-2.0
 
-Live mockup
-http://carpoolsuh.github.io/ui-mockup/
+Team Meetings
+https://github.com/CarpoolsUH/carpools-uh/wiki/Team-Meetings
 
-Lucid-Chart ER Diagram
-http://www.lucidchart.com/invitations/accept/5322b117-cbcc-40e6-89bd-69b80a009433
+Live mockup
+http://carpoolsuh.kpaekn.cloudbees.net/
 
 Introduction
 --------------
@@ -39,12 +21,6 @@ This system is meant to create a carpool system for the University of Hawaii fac
 ![screenshot](https://raw.github.com/CarpoolsUH/ui-mockup/gh-pages/img/cover.png)
 
 ![screenshot](https://raw.github.com/CarpoolsUH/ui-mockup/gh-pages/img/main.png)
-
-
-Installation
--------------
-
-Simply download, install, sign-in and run app.
 
 Usage
 --------------
