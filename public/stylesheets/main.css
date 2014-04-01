@@ -76,6 +76,25 @@ h1, h2, h3, h4, h5, h6 {
 /**
  * App Interface
  */
+.drivers .driver {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .drivers .driver {
+    padding-left: 10px;
+    width: 49%;
+  }
+}
+@media (min-width: 992px) {
+  .drivers .driver {
+    padding-left: 7px;
+    padding-right: 3px;
+    width: 33%;
+  }
+}
+
 /* Filters */
 .application .interface .filters .checkbox {
   display: inline-block;

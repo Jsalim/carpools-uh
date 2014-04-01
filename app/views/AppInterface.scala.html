@@ -69,9 +69,9 @@
     </div>
   </div>
 
-  <div class="drivers row">
+  <div class="drivers">
     @for(driver <- data.getUsers("drivers")) {
-      <div class="driver col-xs-12 col-sm-6 col-md-4">
+      <div class="driver">
         <div class="panel panel-default">
           <div class="panel-heading"><h4>@driver.name() <small>@driver.username()</small></h4></div>
           <div class="panel-body">
