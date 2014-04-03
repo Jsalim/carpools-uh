@@ -17,7 +17,6 @@ h1, h2, h3, h4, h5, h6 {
   outline: none!important;
 }
 
-
 /**
  * Home Page
  */
@@ -74,6 +73,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
+ * App custom icons and tooltips
+ */
+.application .icon {
+  background-size: contain;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.application .no-smoking {
+  background-image: url('../images/icons/no_smoking.png');
+}
+.application .no-eating {
+  background-image: url('../images/icons/no_eating.png');
+}
+.application .no-drinking {
+  background-image: url('../images/icons/no_drinking.png');
+}
+.application .tooltip {
+  white-space: nowrap;
+}
+
+/**
  * App Interface
  */
 .drivers .driver {
@@ -124,24 +145,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .application .interface .driver .preferences {
   float: left;
-}
-.application .interface .icon {
-  background-size: contain;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-}
-.application .interface .no-smoking {
-  background-image: url('../images/icons/no_smoking.png');
-}
-.application .interface .no-eating {
-  background-image: url('../images/icons/no_eating.png');
-}
-.application .interface .no-drinking {
-  background-image: url('../images/icons/no_drinking.png');
-}
-.application .interface .tooltip {
-  white-space: nowrap;
 }
 
 .application .interface .driver .meta {
