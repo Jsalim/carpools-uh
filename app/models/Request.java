@@ -1,6 +1,8 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import models.formdata.RequestFormData;
@@ -29,7 +31,24 @@ public class Request {
     requests.put(id, request);
     return request;
   }
+  
+  /**
+   * Gets request by id.
+   * @param id
+   * @return
+   */
+  public static Request get(long id) {
+    return requests.get(id);
+  }
 
+  /**
+   * Returns all requests as list.
+   * @return
+   */
+  public static List<Request> getAll() {
+    return new ArrayList<Request>(requests.values());
+  }
+  
   /*
    * User instance scope.
    **************************************************************************/
