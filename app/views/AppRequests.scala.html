@@ -81,6 +81,10 @@
           <div class="form-group">
             <label>Are you sure you wish to reject?</label>
           </div>
+          <div class="form-group">
+                  <label>Message <small class="text-muted">Reason for rejection</small></label>
+                  <textarea class="form-control" rows="3" name="message"></textarea>
+            </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">
               <i class="fa fa-times"></i> Reject
@@ -103,6 +107,10 @@
             <h4 class="modal-title">
               @driver.name() <small>@driver.username()</small>
             </h4>
+            <div class="form-group">
+                  <label>Message <small class="text-muted">Extra information to send</small></label>
+                  <textarea class="form-control" rows="3" name="message"></textarea>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">
