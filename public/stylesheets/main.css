@@ -206,3 +206,7 @@ table#times-available th {
 table#times-available .form-group {
   margin-bottom: 0;
 }
+
+.form-group {
+  padding: 10px;
+}
