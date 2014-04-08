@@ -49,6 +49,19 @@ public class Request {
     return new ArrayList<Request>(requests.values());
   }
   
+  /**
+   * Returns request by username.
+   * @return
+   */
+  public static List<String> getUsername() {
+    int count = requests.size();
+    ArrayList<String> driverNames = new ArrayList<String>();
+    while (count > 0) {
+      driverNames.add(requests.get(count).driverUsername);
+    }
+    return driverNames;
+  }
+  
   /*
    * User instance scope.
    **************************************************************************/
