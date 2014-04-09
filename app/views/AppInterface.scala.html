@@ -79,12 +79,20 @@
               @if(driver.userImage().isEmpty()) {
                 <img src="@routes.Assets.at("images/default.png")" />
               } else {
-                <img src="@routes.Assets.at(driver.userImage())" />
+                @if(driver.userImage().substring(0, 4).equals("data")) {
+                  <img src="@driver.userImage()" />
+                } else {
+                  <img src="@routes.Assets.at(driver.userImage())" />
+                }
               }
               @if(driver.vehicleImage().isEmpty()) {
                 <img src="@routes.Assets.at("images/default.png")" />
               } else {
-                <img src="@routes.Assets.at(driver.vehicleImage())" />
+                @if(driver.vehicleImage().substring(0, 4).equals("data")) {
+                  <img src="@driver.vehicleImage()" />
+                } else {
+                  <img src="@routes.Assets.at(driver.vehicleImage())" />
+                }
               }
             </div>
             <p>@driver.comment()</p>
@@ -155,12 +163,20 @@
                       @if(driver.userImage().isEmpty()) {
                         <img src="@routes.Assets.at("images/default.png")" />
                       } else {
-                        <img src="@routes.Assets.at(driver.userImage())" />
+                        @if(driver.userImage().substring(0, 4).equals("data")) {
+                          <img src="@driver.userImage()" />
+                        } else {
+                          <img src="@routes.Assets.at(driver.userImage())" />
+                        }
                       }
                       @if(driver.vehicleImage().isEmpty()) {
                         <img src="@routes.Assets.at("images/default.png")" />
                       } else {
-                        <img src="@routes.Assets.at(driver.vehicleImage())" />
+                        @if(driver.vehicleImage().substring(0, 4).equals("data")) {
+                          <img src="@driver.vehicleImage()" />
+                        } else {
+                          <img src="@routes.Assets.at(driver.vehicleImage())" />
+                        }
                       }
                     </div>
                   </div>
