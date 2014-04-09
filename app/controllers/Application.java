@@ -29,6 +29,7 @@ import views.html.AppInterface;
 import views.html.AppProfile;
 import views.html.AppRequests;
 import views.html.Home;
+import org.apache.commons.mail.*;
 
 public class Application extends Controller {
   
@@ -120,14 +121,24 @@ public class Application extends Controller {
   /**
    * Save the profile information.
    * @throws IOException 
+   * @throws EmailException 
    */
   @Security.Authenticated(Secured.class)
-  public static Result saveProfile() throws IOException {
+  public static Result saveProfile() throws IOException, EmailException {
     User user = User.get(session().get("username"));
     Data data = new Data();
     data.set("pageTitle", "Carpools UH");
     data.set("user", user);
-    
+    Email email = new SimpleEmail();
+    email.setHostName("smtp.googlemail.com");
+    email.setSmtpPort(465);
+    email.setAuthenticator(new DefaultAuthenticator("", ""));
+    email.setSSLOnConnect(true);
+    email.setFrom("brentmy@gmail.com");
+    email.setSubject("TestMail");
+    email.setMsg("This is a test mail ... :-)");
+    email.addTo("brentmy@gmail.com");
+    email.send();
     Form<UserFormData> userForm = Form.form(UserFormData.class).bindFromRequest();
     if(userForm.hasErrors()) {
       return badRequest(AppProfile.render(data, userForm));
@@ -222,5 +233,19 @@ public class Application extends Controller {
 
     is.close();
     return bytes;
+  }
+  
+  public static Result sendEmail() throws EmailException {
+    Email email = new SimpleEmail();
+    email.setHostName("smtp.googlemail.com");
+    email.setSmtpPort(465);
+    email.setAuthenticator(new DefaultAuthenticator("", ""));
+    email.setSSLOnConnect(true);
+    email.setFrom("brentmy@gmail.com");
+    email.setSubject("TestMail");
+    email.setMsg("This is a test mail ... :-)");
+    email.addTo("brentmy@gmail.com");
+    email.send();
+    return redirect(routes.Application.appInterface());
   }
 }
